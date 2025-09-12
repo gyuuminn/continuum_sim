@@ -1,0 +1,324 @@
+<mujoco model="Truncated octahedron tensegrity">
+  <option timestep="1.0000000000000001e-05"/>
+  <default>
+    <default class="/">
+      <geom solref="0.0001 1"/>
+      <equality solref="0.0001 1"/>
+      <default class="bar">
+        <joint type="slide" axis="0 0 1" limited="true" stiffness="862372.04334828781" range="0.52212820504653834 0.63815669505688022" springref="0.58014245005170928" damping="94.766158609701947"/>
+        <geom type="capsule" size="0.0040000000000000001" rgba="0.40000000000000002 0.40000000000000002 0.40000000000000002 1" mass="0.0022964397864887218" fromto="0 0 0 0 0 0.29007122502585464"/>
+        <site size="9.9999999999999995e-07"/>
+      </default>
+      <!-- Following element corresponds to using solreflimit attribute -->
+      <!--
+      <default class="cable">
+        <tendon limited="true" range="0 0.22878083292094203" solreflimit="-274637.74945477257 -0" solimplimit="0.01 0.01 0.001 0.5 2" width="0.002" rgba="0.20000000000000001 0.5 0.80000000000000004 0.90000000000000002"/>
+      </default>
+      -->
+      <!-- Following element corresponds to using stiffness attribute -->
+      <default class="cable">
+        <tendon width="0.002" rgba="0.20000000000000001 0.5 0.80000000000000004 0.90000000000000002" stiffness="274637.74945477257" damping="0"/>
+      </default>
+    </default>
+  </default>
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.10000000000000001 0.20000000000000001 0.29999999999999999" rgb2="0.20000000000000001 0.29999999999999999 0.40000000000000002" width="512" height="512"/>
+    <material name="grid" class="/" texture="grid" texrepeat="1 1" texuniform="true" reflectance="0.20000000000000001"/>
+  </asset>
+  <worldbody>
+    <body name="member_0" pos="0.15976599999999999 -0.316992 0.30159200000000003" zaxis="-0.31953199999999998 0.34239199999999997 0.34239199999999997">
+      <joint name="member_0_joint" class="/" type="free"/>
+      <body name="member_0_node_0">
+        <geom name="member_0_mass_0" class="bar"/>
+        <site name="member_0_site_0" class="bar"/>
+        <body name="member_0_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_0_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_0_mass_1" class="bar"/>
+          <site name="member_0_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_1" pos="-0.025399999999999999 -0.316992 0.16722600000000001" zaxis="0.34239199999999997 0.34239199999999997 0.31953200000000004">
+      <joint name="member_1_joint" class="/" type="free"/>
+      <body name="member_1_node_0">
+        <geom name="member_1_mass_0" class="bar"/>
+        <site name="member_1_site_0" class="bar"/>
+        <body name="member_1_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_1_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_1_mass_1" class="bar"/>
+          <site name="member_1_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_2" pos="0.15976599999999999 0.025399999999999999 0.010000000000000009" zaxis="-0.31953199999999998 -0.34239199999999997 0.34239199999999997">
+      <joint name="member_2_joint" class="/" type="free"/>
+      <body name="member_2_node_0">
+        <geom name="member_2_mass_0" class="bar"/>
+        <site name="member_2_site_0" class="bar"/>
+        <body name="member_2_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_2_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_2_mass_1" class="bar"/>
+          <site name="member_2_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_3" pos="-0.316992 0.025399999999999999 0.16722600000000001" zaxis="0.34239199999999997 -0.34239199999999997 0.31953200000000004">
+      <joint name="member_3_joint" class="/" type="free"/>
+      <body name="member_3_node_0">
+        <geom name="member_3_mass_0" class="bar"/>
+        <site name="member_3_site_0" class="bar"/>
+        <body name="member_3_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_3_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_3_mass_1" class="bar"/>
+          <site name="member_3_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_4" pos="-0.025399999999999999 0.15976599999999999 0.010000000000000009" zaxis="0.34239199999999997 -0.31953199999999998 0.34239199999999997">
+      <joint name="member_4_joint" class="/" type="free"/>
+      <body name="member_4_node_0">
+        <geom name="member_4_mass_0" class="bar"/>
+        <site name="member_4_site_0" class="bar"/>
+        <body name="member_4_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_4_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_4_mass_1" class="bar"/>
+          <site name="member_4_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_5" pos="0.025399999999999999 -0.15976599999999999 0.010000000000000009" zaxis="-0.34239199999999997 0.31953199999999998 0.34239199999999997">
+      <joint name="member_5_joint" class="/" type="free"/>
+      <body name="member_5_node_0">
+        <geom name="member_5_mass_0" class="bar"/>
+        <site name="member_5_site_0" class="bar"/>
+        <body name="member_5_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_5_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_5_mass_1" class="bar"/>
+          <site name="member_5_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_6" pos="-0.316992 -0.15976599999999999 0.30159200000000003" zaxis="0.34239199999999997 0.31953199999999998 0.34239199999999997">
+      <joint name="member_6_joint" class="/" type="free"/>
+      <body name="member_6_node_0">
+        <geom name="member_6_mass_0" class="bar"/>
+        <site name="member_6_site_0" class="bar"/>
+        <body name="member_6_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_6_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_6_mass_1" class="bar"/>
+          <site name="member_6_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_7" pos="0.316992 0.15976599999999999 0.30159200000000003" zaxis="-0.34239199999999997 -0.31953199999999998 0.34239199999999997">
+      <joint name="member_7_joint" class="/" type="free"/>
+      <body name="member_7_node_0">
+        <geom name="member_7_mass_0" class="bar"/>
+        <site name="member_7_site_0" class="bar"/>
+        <body name="member_7_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_7_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_7_mass_1" class="bar"/>
+          <site name="member_7_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_8" pos="-0.15976599999999999 0.316992 0.30159200000000003" zaxis="0.31953199999999998 -0.34239199999999997 0.34239199999999997">
+      <joint name="member_8_joint" class="/" type="free"/>
+      <body name="member_8_node_0">
+        <geom name="member_8_mass_0" class="bar"/>
+        <site name="member_8_site_0" class="bar"/>
+        <body name="member_8_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_8_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_8_mass_1" class="bar"/>
+          <site name="member_8_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_9" pos="0.316992 -0.025399999999999999 0.16722600000000001" zaxis="-0.34239199999999997 0.34239199999999997 0.31953200000000004">
+      <joint name="member_9_joint" class="/" type="free"/>
+      <body name="member_9_node_0">
+        <geom name="member_9_mass_0" class="bar"/>
+        <site name="member_9_site_0" class="bar"/>
+        <body name="member_9_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_9_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_9_mass_1" class="bar"/>
+          <site name="member_9_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_10" pos="-0.15976599999999999 -0.025399999999999999 0.010000000000000009" zaxis="0.31953199999999998 0.34239199999999997 0.34239199999999997">
+      <joint name="member_10_joint" class="/" type="free"/>
+      <body name="member_10_node_0">
+        <geom name="member_10_mass_0" class="bar"/>
+        <site name="member_10_site_0" class="bar"/>
+        <body name="member_10_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_10_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_10_mass_1" class="bar"/>
+          <site name="member_10_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <body name="member_11" pos="0.025399999999999999 0.316992 0.16722600000000001" zaxis="-0.34239199999999997 -0.34239199999999997 0.31953200000000004">
+      <joint name="member_11_joint" class="/" type="free"/>
+      <body name="member_11_node_0">
+        <geom name="member_11_mass_0" class="bar"/>
+        <site name="member_11_site_0" class="bar"/>
+        <body name="member_11_node_1" pos="0 0 0.58014245005170928" zaxis="0 0 -1">
+          <joint name="member_11_spring" class="bar" ref="0.58014245005170928"/>
+          <geom name="member_11_mass_1" class="bar"/>
+          <site name="member_11_site_1" class="bar"/>
+        </body>
+      </body>
+    </body>
+    <geom name="floor" class="/" type="plane" size="0 0 0.050000000000000003" material="grid"/>
+    <light name="spotlight" class="/" mode="trackcom" pos="0 0 6" diffuse="0.80000000000000004 0.80000000000000004 0.80000000000000004" specular="0.29999999999999999 0.29999999999999999 0.29999999999999999"/>
+  </worldbody>
+  <tendon>
+    <spatial name="member_12" class="cable" springlength="0.22878083292094203">
+      <site site="member_8_site_1"/>
+      <site site="member_7_site_1"/>
+    </spatial>
+    <spatial name="member_13" class="cable" springlength="0.22878083292094203">
+      <site site="member_0_site_1"/>
+      <site site="member_7_site_1"/>
+    </spatial>
+    <spatial name="member_14" class="cable" springlength="0.22878083292094203">
+      <site site="member_0_site_1"/>
+      <site site="member_6_site_1"/>
+    </spatial>
+    <spatial name="member_15" class="cable" springlength="0.22878083292094203">
+      <site site="member_6_site_1"/>
+      <site site="member_8_site_1"/>
+    </spatial>
+    <spatial name="member_16" class="cable" springlength="0.22878083292094203">
+      <site site="member_0_site_0"/>
+      <site site="member_3_site_1"/>
+    </spatial>
+    <spatial name="member_17" class="cable" springlength="0.22878083292094203">
+      <site site="member_6_site_0"/>
+      <site site="member_11_site_1"/>
+    </spatial>
+    <spatial name="member_18" class="cable" springlength="0.22878083292094203">
+      <site site="member_8_site_0"/>
+      <site site="member_9_site_1"/>
+    </spatial>
+    <spatial name="member_19" class="cable" springlength="0.22878083292094203">
+      <site site="member_7_site_0"/>
+      <site site="member_1_site_1"/>
+    </spatial>
+    <spatial name="member_20" class="cable" springlength="0.22878083292094203">
+      <site site="member_2_site_1"/>
+      <site site="member_3_site_1"/>
+    </spatial>
+    <spatial name="member_21" class="cable" springlength="0.22878083292094203">
+      <site site="member_5_site_1"/>
+      <site site="member_11_site_1"/>
+    </spatial>
+    <spatial name="member_22" class="cable" springlength="0.22878083292094203">
+      <site site="member_10_site_1"/>
+      <site site="member_9_site_1"/>
+    </spatial>
+    <spatial name="member_23" class="cable" springlength="0.22878083292094203">
+      <site site="member_4_site_1"/>
+      <site site="member_1_site_1"/>
+    </spatial>
+    <spatial name="member_24" class="cable" springlength="0.22878083292094203">
+      <site site="member_1_site_0"/>
+      <site site="member_0_site_0"/>
+    </spatial>
+    <spatial name="member_25" class="cable" springlength="0.22878083292094203">
+      <site site="member_3_site_0"/>
+      <site site="member_6_site_0"/>
+    </spatial>
+    <spatial name="member_26" class="cable" springlength="0.22878083292094203">
+      <site site="member_11_site_0"/>
+      <site site="member_8_site_0"/>
+    </spatial>
+    <spatial name="member_27" class="cable" springlength="0.22878083292094203">
+      <site site="member_9_site_0"/>
+      <site site="member_7_site_0"/>
+    </spatial>
+    <spatial name="member_28" class="cable" springlength="0.22878083292094203">
+      <site site="member_1_site_0"/>
+      <site site="member_2_site_1"/>
+    </spatial>
+    <spatial name="member_29" class="cable" springlength="0.22878083292094203">
+      <site site="member_3_site_0"/>
+      <site site="member_5_site_1"/>
+    </spatial>
+    <spatial name="member_30" class="cable" springlength="0.22878083292094203">
+      <site site="member_11_site_0"/>
+      <site site="member_10_site_1"/>
+    </spatial>
+    <spatial name="member_31" class="cable" springlength="0.22878083292094203">
+      <site site="member_9_site_0"/>
+      <site site="member_4_site_1"/>
+    </spatial>
+    <spatial name="member_32" class="cable" springlength="0.22878083292094203">
+      <site site="member_2_site_0"/>
+      <site site="member_5_site_0"/>
+    </spatial>
+    <spatial name="member_33" class="cable" springlength="0.22878083292094203">
+      <site site="member_10_site_0"/>
+      <site site="member_5_site_0"/>
+    </spatial>
+    <spatial name="member_34" class="cable" springlength="0.22878083292094203">
+      <site site="member_4_site_0"/>
+      <site site="member_10_site_0"/>
+    </spatial>
+    <spatial name="member_35" class="cable" springlength="0.22878083292094203">
+      <site site="member_2_site_0"/>
+      <site site="member_4_site_0"/>
+    </spatial>
+    <spatial name="member_36" class="cable" springlength="0.22808040282321493">
+      <site site="member_3_site_1"/>
+      <site site="member_7_site_1"/>
+    </spatial>
+    <spatial name="member_37" class="cable" springlength="0.22808040282321493">
+      <site site="member_11_site_1"/>
+      <site site="member_0_site_1"/>
+    </spatial>
+    <spatial name="member_38" class="cable" springlength="0.22808040282321493">
+      <site site="member_1_site_1"/>
+      <site site="member_8_site_1"/>
+    </spatial>
+    <spatial name="member_39" class="cable" springlength="0.22808040282321493">
+      <site site="member_9_site_1"/>
+      <site site="member_6_site_1"/>
+    </spatial>
+    <spatial name="member_40" class="cable" springlength="0.22808040282321493">
+      <site site="member_0_site_0"/>
+      <site site="member_4_site_1"/>
+    </spatial>
+    <spatial name="member_41" class="cable" springlength="0.22808040282321493">
+      <site site="member_6_site_0"/>
+      <site site="member_2_site_1"/>
+    </spatial>
+    <spatial name="member_42" class="cable" springlength="0.22808040282321493">
+      <site site="member_8_site_0"/>
+      <site site="member_5_site_1"/>
+    </spatial>
+    <spatial name="member_43" class="cable" springlength="0.22808040282321493">
+      <site site="member_7_site_0"/>
+      <site site="member_10_site_1"/>
+    </spatial>
+    <spatial name="member_44" class="cable" springlength="0.22808040282321493">
+      <site site="member_5_site_0"/>
+      <site site="member_1_site_0"/>
+    </spatial>
+    <spatial name="member_45" class="cable" springlength="0.22808040282321493">
+      <site site="member_10_site_0"/>
+      <site site="member_3_site_0"/>
+    </spatial>
+    <spatial name="member_46" class="cable" springlength="0.22808040282321493">
+      <site site="member_4_site_0"/>
+      <site site="member_11_site_0"/>
+    </spatial>
+    <spatial name="member_47" class="cable" springlength="0.22808040282321493">
+      <site site="member_2_site_0"/>
+      <site site="member_9_site_0"/>
+    </spatial>
+  </tendon>
+  <sensor>
+  </sensor>
+</mujoco>

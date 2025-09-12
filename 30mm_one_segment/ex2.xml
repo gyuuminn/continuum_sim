@@ -1,0 +1,56 @@
+<mujoco model="wire_test">
+    <compiler angle="degree"/>
+    <option timestep="0.001"/>
+    <asset>
+        <material name="pulley_mat" rgba="0.7 0.7 0.7 1"/>
+    </asset>
+
+    <worldbody>
+        <body name="base" pos="0 0 0">
+            <site name="anchor_base" pos="0 0 0.10" size="0.002"/>
+            <!-- 래핑용 원통: fromto를 쓰면 size는 반지름 1개만 필요 -->
+            <geom name="pulley1" type="cylinder"
+                    fromto="0.05 0 0.10   0.05 0 0.12"
+                    size="0.005" material="pulley_mat"
+                    contype="0" conaffinity="0"/>
+            <body name="link" pos="0.20 0 0">
+            <!-- Y축 힌지, -45~45도 -->
+            <joint name="hinge" type="hinge" axis="0 1 0" limited="true" range="-45 45"/>
+
+            <!-- 관성용 질량 지오메트리 (x축으로 8cm 막대, 지름 2cm, 질량 0.25kg) -->
+            <geom name="link_mass" type="capsule"
+                    fromto="0 0 0   0.08 0 0"  size="0.01"
+                    mass="0.25" rgba="0.4 0.6 0.8 1"/>
+
+            <!-- 힌지축에서 약간 떨어뜨려 모멘트암 확보 -->
+            <site name="anchor_link" pos="0.03 0 0.05" size="0.002"/>
+            </body>
+        </body>
+    </worldbody>
+
+    <tendon>
+        <spatial name="wire"
+                stiffness="1.94e5"
+                damping="78.8"
+                frictionloss="1.0"
+                limited="true" range="0.48 0.52"
+                springlength="0.499845">
+        <site site="anchor_base"/>
+        <geom geom="pulley1"/>
+        <site site="anchor_link"/>
+        </spatial>
+    </tendon>
+    <sensor>
+        <tendonpos  tendon="wire"/>
+        <tendonvel  tendon="wire"/>
+        <tendonactuatorfrc tendon="wire"/>
+        <!-- 액추에이터 자체 출력힘(전달 전) / 조인트에 들어간 총 액추에이터힘 -->
+        <actuatorfrc actuator="wire_motor"/>
+        <jointactuatorfrc joint="hinge"/>
+        <jointpos   joint="hinge"/>
+        <jointvel   joint="hinge"/>
+    </sensor>
+    <actuator>
+        <motor name="wire_motor" tendon="wire" gear="1.0"/>
+    </actuator>
+</mujoco>
