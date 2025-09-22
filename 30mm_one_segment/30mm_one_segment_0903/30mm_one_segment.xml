@@ -1,6 +1,10 @@
 <mujoco model="30mm_one_segment">
     <!-- <compiler angle="radian" eulerseq="XYZ" /> --> <!--eulerseq="xyz"→ euler="a b c" 같은 오일러 각을 x → y → z 순서로, 축이 매 단계 회전과 함께 따라가는 “내재(intrinsic)” 방식으로 적용한다는 뜻, 소문자 = intrinsic / 대문자 = extrinsic-->
     <!-- <include file="scene.xml"/> 배경, 바닥 등 추가 가능 -->
+    <!-- <extension>
+        <plugin plugin="mujoco.elasticity.cable"/>
+    </extension> -->
+    <size memory="128M"/>
 
     <asset>
         <mesh name="mesh_component2" file="meshes/mesh_component2.stl" scale="0.001 0.001 0.001" /> <!-- The mesh file for the component -->
@@ -13,6 +17,74 @@
             <geom name="geom_comp_root" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
             <inertial mass="0.034962578305385045" pos="-7.472585541467528e-08 7.901881324749933e-09 0.00013813391178014084" fullinertia="3.055182113221844e-06 2.848652002682884e-06 5.213750324900917e-06 -4.694970745810055e-12 -1.2612174129223041e-11 1.8838018378797825e-12" />
             
+            <!-- ───────── 중앙 백본(스프링 역할) ───────── -->
+            <body name="bb_frame" pos="0.01794 0 -0.0075" quat="0.70710678 0 0 0.70710678">
+            <!-- fromto는 프레임 로컬 z축으로 -60mm ~ +60mm -->
+            <composite type="cable" prefix="bb_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
+                <!-- ex4.xml과 동일한 케이블 플러그인(단, 백본이라 강성↑) -->
+                <plugin plugin="mujoco.elasticity.cable">
+                    <config key="twist" value="6e7"/>
+                    <config key="bend"  value="3e7"/>
+                    <config key="vmax"  value="0.05"/>
+                </plugin>
+                <!-- 케이블 관절: 백본 탄성/댐핑 -->
+                <joint kind="main" damping="0.05" stiffness="150" frictionloss="0"/>
+                <!-- 지름: 2.5mm(구멍 내경보다 살짝 작게) -->
+                <geom type="capsule" size="0.0025" density="7800" condim="3"
+                    friction="0.6 0.01 0.0001" rgba=".75 .75 .8 1"/>
+            </composite>
+            </body>
+            <!-- +X 방향 홀: center + ( +0.0105, 0, 0 ) = (0.02844, 0, -0.0075) -->
+            <body name="ten_px_frame" pos="0.02844 0 -0.0075" quat="0.70710678 0 0 0.70710678">
+            <composite type="cable" prefix="ten_px_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
+                <plugin plugin="mujoco.elasticity.cable">
+                    <config key="twist" value="5e7"/>
+                    <config key="bend"  value="2e7"/>
+                    <config key="vmax"  value="0.05"/>
+                </plugin>
+                <joint kind="main" damping="0.03" frictionloss="0"/>
+                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
+            </composite>
+            </body>
+
+            <!-- -X 방향 홀: center + ( -0.0105, 0, 0 ) = (0.00744, 0, -0.0075) -->
+            <body name="ten_nx_frame" pos="0.00744 0 -0.0075" quat="0.70710678 0 0 0.70710678">
+            <composite type="cable" prefix="ten_nx_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
+                <plugin plugin="mujoco.elasticity.cable">
+                    <config key="twist" value="5e7"/>
+                    <config key="bend"  value="2e7"/>
+                    <config key="vmax"  value="0.05"/>
+                </plugin>
+                <joint kind="main" damping="0.03" frictionloss="0"/>
+                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
+            </composite>
+            </body>
+
+            <!-- +Y 방향 홀: center + ( 0, +0.0105, 0 ) = (0.01794, 0.0105, -0.0075) -->
+            <body name="ten_py_frame" pos="0.01794 0.0105 -0.0075" quat="0.70710678 0 0 0.70710678">
+            <composite type="cable" prefix="ten_py_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
+                <plugin plugin="mujoco.elasticity.cable">
+                    <config key="twist" value="5e7"/>
+                    <config key="bend"  value="2e7"/>
+                    <config key="vmax"  value="0.05"/>
+                </plugin>
+                <joint kind="main" damping="0.03" frictionloss="0"/>
+                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
+            </composite>
+            </body>
+
+            <!-- -Y 방향 홀: center + ( 0, -0.0105, 0 ) = (0.01794, -0.0105, -0.0075) -->
+            <body name="ten_ny_frame" pos="0.01794 -0.0105 -0.0075" quat="0.70710678 0 0 0.70710678">
+            <composite type="cable" prefix="ten_ny_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
+                <plugin plugin="mujoco.elasticity.cable">
+                    <config key="twist" value="5e7"/>
+                    <config key="bend"  value="2e7"/>
+                    <config key="vmax"  value="0.05"/>
+                </plugin>
+                <joint kind="main" damping="0.03" frictionloss="0"/>
+                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
+            </composite>
+            </body>
 
             <body name="comp_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
                 <joint name="rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" /> <!--joint axis: 이 조인트가 어느 방향으로 움직이는지, pos: 조인트의 앵커(회전/이동이 일어나는 점) 위치-->
@@ -57,5 +129,25 @@
             </body>
         </body>
     </worldbody>
+    <equality>
+        <!-- Backbone -->
+        <weld body1="bb_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
+        <weld body1="bb_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
 
+        <!-- +X tendon -->
+        <weld body1="ten_px_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
+        <weld body1="ten_px_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
+
+        <!-- -X tendon -->
+        <weld body1="ten_nx_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
+        <weld body1="ten_nx_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
+
+        <!-- +Y tendon -->
+        <weld body1="ten_py_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
+        <weld body1="ten_py_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
+
+        <!-- -Y tendon -->
+        <weld body1="ten_ny_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
+        <weld body1="ten_ny_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
+    </equality>
 </mujoco>

@@ -1,3 +1,5 @@
+<!-- Example File -->
+
 <?xml version="1.0"?>
 <mujoco model="continuum_sers_shell_sites">
   <!-- 3 segments, 10 vertebra/segment. Effective bends: pitch×4, yaw×4; last link fixed.
@@ -16,7 +18,7 @@
   </default>
 
   <!-- spacing per vertebra interval -->
-  <!-- d = 0.012 m; internal tendon offset r_in = 0.006 m -->
+  <!-- d = 0.012 m; internal tendon offset r_in = 0.004 m -->
 
   <worldbody>
     <body name="base" pos="0 0 0">
@@ -25,75 +27,75 @@
       <!-- ================= SEGMENT 1 ================= -->
       <body name="seg1_base" pos="0 0 0.000">
         <!-- Base internal anchors -->
-        <site name="seg1_base_Ni" pos="0 0.006 0"/>
-        <site name="seg1_base_Ei" pos="0.006 0 0"/>
-        <site name="seg1_base_Si" pos="0 -0.006 0"/>
-        <site name="seg1_base_Wi" pos="-0.006 0 0"/>
+        <site name="seg1_base_Ni" pos="0 0.004 0"/>
+        <site name="seg1_base_Ei" pos="0.004 0 0"/>
+        <site name="seg1_base_Si" pos="0 -0.004 0"/>
+        <site name="seg1_base_Wi" pos="-0.004 0 0"/>
 
         <!-- Vertebra chain V1..V10; add 4 waypoint sites at the DISTAL end of V1..V8 -->
         <body name="seg1_v1" pos="0 0 0.012">
           <geom name="seg1_v1_geom" fromto="0 0 0  0 0 0.012" rgba="0.90 0.10 0.10 1"/>
           <joint name="seg1_j1_pitch" type="hinge" axis="1 0 0"/>
-          <site name="seg1_v1_Ni" pos="0 0.006 0.012"/>
-          <site name="seg1_v1_Ei" pos="0.006 0 0.012"/>
-          <site name="seg1_v1_Si" pos="0 -0.006 0.012"/>
-          <site name="seg1_v1_Wi" pos="-0.006 0 0.012"/>
+          <site name="seg1_v1_Ni" pos="0 0.004 0.012"/>
+          <site name="seg1_v1_Ei" pos="0.004 0 0.012"/>
+          <site name="seg1_v1_Si" pos="0 -0.004 0.012"/>
+          <site name="seg1_v1_Wi" pos="-0.004 0 0.012"/>
 
           <body name="seg1_v2" pos="0 0 0.012">
             <geom name="seg1_v2_geom" fromto="0 0 0  0 0 0.012" rgba="0.95 0.45 0.10 1"/>
             <joint name="seg1_j2_yaw" type="hinge" axis="0 1 0"/>
-            <site name="seg1_v2_Ni" pos="0 0.006 0.012"/>
-            <site name="seg1_v2_Ei" pos="0.006 0 0.012"/>
-            <site name="seg1_v2_Si" pos="0 -0.006 0.012"/>
-            <site name="seg1_v2_Wi" pos="-0.006 0 0.012"/>
+            <site name="seg1_v2_Ni" pos="0 0.004 0.012"/>
+            <site name="seg1_v2_Ei" pos="0.004 0 0.012"/>
+            <site name="seg1_v2_Si" pos="0 -0.004 0.012"/>
+            <site name="seg1_v2_Wi" pos="-0.004 0 0.012"/>
 
             <body name="seg1_v3" pos="0 0 0.012">
               <geom name="seg1_v3_geom" fromto="0 0 0  0 0 0.012" rgba="0.98 0.80 0.10 1"/>
               <joint name="seg1_j3_pitch" type="hinge" axis="1 0 0"/>
-              <site name="seg1_v3_Ni" pos="0 0.006 0.012"/>
-              <site name="seg1_v3_Ei" pos="0.006 0 0.012"/>
-              <site name="seg1_v3_Si" pos="0 -0.006 0.012"/>
-              <site name="seg1_v3_Wi" pos="-0.006 0 0.012"/>
+              <site name="seg1_v3_Ni" pos="0 0.004 0.012"/>
+              <site name="seg1_v3_Ei" pos="0.004 0 0.012"/>
+              <site name="seg1_v3_Si" pos="0 -0.004 0.012"/>
+              <site name="seg1_v3_Wi" pos="-0.004 0 0.012"/>
 
               <body name="seg1_v4" pos="0 0 0.012">
                 <geom name="seg1_v4_geom" fromto="0 0 0  0 0 0.012" rgba="0.40 0.85 0.10 1"/>
                 <joint name="seg1_j4_yaw" type="hinge" axis="0 1 0"/>
-                <site name="seg1_v4_Ni" pos="0 0.006 0.012"/>
-                <site name="seg1_v4_Ei" pos="0.006 0 0.012"/>
-                <site name="seg1_v4_Si" pos="0 -0.006 0.012"/>
-                <site name="seg1_v4_Wi" pos="-0.006 0 0.012"/>
+                <site name="seg1_v4_Ni" pos="0 0.004 0.012"/>
+                <site name="seg1_v4_Ei" pos="0.004 0 0.012"/>
+                <site name="seg1_v4_Si" pos="0 -0.004 0.012"/>
+                <site name="seg1_v4_Wi" pos="-0.004 0 0.012"/>
 
                 <body name="seg1_v5" pos="0 0 0.012">
                   <geom name="seg1_v5_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.70 0.40 1"/>
                   <joint name="seg1_j5_pitch" type="hinge" axis="1 0 0"/>
-                  <site name="seg1_v5_Ni" pos="0 0.006 0.012"/>
-                  <site name="seg1_v5_Ei" pos="0.006 0 0.012"/>
-                  <site name="seg1_v5_Si" pos="0 -0.006 0.012"/>
-                  <site name="seg1_v5_Wi" pos="-0.006 0 0.012"/>
+                  <site name="seg1_v5_Ni" pos="0 0.004 0.012"/>
+                  <site name="seg1_v5_Ei" pos="0.004 0 0.012"/>
+                  <site name="seg1_v5_Si" pos="0 -0.004 0.012"/>
+                  <site name="seg1_v5_Wi" pos="-0.004 0 0.012"/>
 
                   <body name="seg1_v6" pos="0 0 0.012">
                     <geom name="seg1_v6_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.70 0.85 1"/>
                     <joint name="seg1_j6_yaw" type="hinge" axis="0 1 0"/>
-                    <site name="seg1_v6_Ni" pos="0 0.006 0.012"/>
-                    <site name="seg1_v6_Ei" pos="0.006 0 0.012"/>
-                    <site name="seg1_v6_Si" pos="0 -0.006 0.012"/>
-                    <site name="seg1_v6_Wi" pos="-0.006 0 0.012"/>
+                    <site name="seg1_v6_Ni" pos="0 0.004 0.012"/>
+                    <site name="seg1_v6_Ei" pos="0.004 0 0.012"/>
+                    <site name="seg1_v6_Si" pos="0 -0.004 0.012"/>
+                    <site name="seg1_v6_Wi" pos="-0.004 0 0.012"/>
 
                     <body name="seg1_v7" pos="0 0 0.012">
                       <geom name="seg1_v7_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.40 0.90 1"/>
                       <joint name="seg1_j7_pitch" type="hinge" axis="1 0 0"/>
-                      <site name="seg1_v7_Ni" pos="0 0.006 0.012"/>
-                      <site name="seg1_v7_Ei" pos="0.006 0 0.012"/>
-                      <site name="seg1_v7_Si" pos="0 -0.006 0.012"/>
-                      <site name="seg1_v7_Wi" pos="-0.006 0 0.012"/>
+                      <site name="seg1_v7_Ni" pos="0 0.004 0.012"/>
+                      <site name="seg1_v7_Ei" pos="0.004 0 0.012"/>
+                      <site name="seg1_v7_Si" pos="0 -0.004 0.012"/>
+                      <site name="seg1_v7_Wi" pos="-0.004 0 0.012"/>
 
                       <body name="seg1_v8" pos="0 0 0.012">
                         <geom name="seg1_v8_geom" fromto="0 0 0  0 0 0.012" rgba="0.45 0.20 0.95 1"/>
                         <joint name="seg1_j8_yaw" type="hinge" axis="0 1 0"/>
-                        <site name="seg1_v8_Ni" pos="0 0.006 0.012"/>
-                        <site name="seg1_v8_Ei" pos="0.006 0 0.012"/>
-                        <site name="seg1_v8_Si" pos="0 -0.006 0.012"/>
-                        <site name="seg1_v8_Wi" pos="-0.006 0 0.012"/>
+                        <site name="seg1_v8_Ni" pos="0 0.004 0.012"/>
+                        <site name="seg1_v8_Ei" pos="0.004 0 0.012"/>
+                        <site name="seg1_v8_Si" pos="0 -0.004 0.012"/>
+                        <site name="seg1_v8_Wi" pos="-0.004 0 0.012"/>
 
                         <body name="seg1_v9" pos="0 0 0.012">
                           <geom name="seg1_v9_geom" fromto="0 0 0  0 0 0.012" rgba="0.75 0.15 0.60 1"/>
@@ -101,162 +103,162 @@
                             <geom name="seg1_v10_geom" fromto="0 0 0  0 0 0.012" rgba="0.35 0.35 0.35 1"/>
                             <site name="seg1_imu" pos="0 0 0.012"/>
                             <!-- internal tip anchors -->
-                            <site name="seg1_tip_Ni" pos="0 0.006 0.012"/>
-                            <site name="seg1_tip_Ei" pos="0.006 0 0.012"/>
-                            <site name="seg1_tip_Si" pos="0 -0.006 0.012"/>
-                            <site name="seg1_tip_Wi" pos="-0.006 0 0.012"/>
+                            <site name="seg1_tip_Ni" pos="0 0.004 0.012"/>
+                            <site name="seg1_tip_Ei" pos="0.004 0 0.012"/>
+                            <site name="seg1_tip_Si" pos="0 -0.004 0.012"/>
+                            <site name="seg1_tip_Wi" pos="-0.004 0 0.012"/>
 
                             <!-- ================= SEGMENT 2 ================= -->
                             <body name="seg2_base" pos="0 0 0.005">
-                              <site name="seg2_base_Ni" pos="0 0.006 0"/>
-                              <site name="seg2_base_Ei" pos="0.006 0 0"/>
-                              <site name="seg2_base_Si" pos="0 -0.006 0"/>
-                              <site name="seg2_base_Wi" pos="-0.006 0 0"/>
+                              <site name="seg2_base_Ni" pos="0 0.004 0"/>
+                              <site name="seg2_base_Ei" pos="0.004 0 0"/>
+                              <site name="seg2_base_Si" pos="0 -0.004 0"/>
+                              <site name="seg2_base_Wi" pos="-0.004 0 0"/>
 
                               <body name="seg2_v1" pos="0 0 0.012">
                                 <geom name="seg2_v1_geom" fromto="0 0 0  0 0 0.012" rgba="0.90 0.10 0.10 1"/>
                                 <joint name="seg2_j1_pitch" type="hinge" axis="1 0 0"/>
-                                <site name="seg2_v1_Ni" pos="0 0.006 0.012"/>
-                                <site name="seg2_v1_Ei" pos="0.006 0 0.012"/>
-                                <site name="seg2_v1_Si" pos="0 -0.006 0.012"/>
-                                <site name="seg2_v1_Wi" pos="-0.006 0 0.012"/>
+                                <site name="seg2_v1_Ni" pos="0 0.004 0.012"/>
+                                <site name="seg2_v1_Ei" pos="0.004 0 0.012"/>
+                                <site name="seg2_v1_Si" pos="0 -0.004 0.012"/>
+                                <site name="seg2_v1_Wi" pos="-0.004 0 0.012"/>
 
                                 <body name="seg2_v2" pos="0 0 0.012">
                                   <geom name="seg2_v2_geom" fromto="0 0 0  0 0 0.012" rgba="0.95 0.45 0.10 1"/>
                                   <joint name="seg2_j2_yaw" type="hinge" axis="0 1 0"/>
-                                  <site name="seg2_v2_Ni" pos="0 0.006 0.012"/>
-                                  <site name="seg2_v2_Ei" pos="0.006 0 0.012"/>
-                                  <site name="seg2_v2_Si" pos="0 -0.006 0.012"/>
-                                  <site name="seg2_v2_Wi" pos="-0.006 0 0.012"/>
+                                  <site name="seg2_v2_Ni" pos="0 0.004 0.012"/>
+                                  <site name="seg2_v2_Ei" pos="0.004 0 0.012"/>
+                                  <site name="seg2_v2_Si" pos="0 -0.004 0.012"/>
+                                  <site name="seg2_v2_Wi" pos="-0.004 0 0.012"/>
 
                                   <body name="seg2_v3" pos="0 0 0.012">
                                     <geom name="seg2_v3_geom" fromto="0 0 0  0 0 0.012" rgba="0.98 0.80 0.10 1"/>
                                     <joint name="seg2_j3_pitch" type="hinge" axis="1 0 0"/>
-                                    <site name="seg2_v3_Ni" pos="0 0.006 0.012"/>
-                                    <site name="seg2_v3_Ei" pos="0.006 0 0.012"/>
-                                    <site name="seg2_v3_Si" pos="0 -0.006 0.012"/>
-                                    <site name="seg2_v3_Wi" pos="-0.006 0 0.012"/>
+                                    <site name="seg2_v3_Ni" pos="0 0.004 0.012"/>
+                                    <site name="seg2_v3_Ei" pos="0.004 0 0.012"/>
+                                    <site name="seg2_v3_Si" pos="0 -0.004 0.012"/>
+                                    <site name="seg2_v3_Wi" pos="-0.004 0 0.012"/>
 
                                     <body name="seg2_v4" pos="0 0 0.012">
                                       <geom name="seg2_v4_geom" fromto="0 0 0  0 0 0.012" rgba="0.40 0.85 0.10 1"/>
                                       <joint name="seg2_j4_yaw" type="hinge" axis="0 1 0"/>
-                                      <site name="seg2_v4_Ni" pos="0 0.006 0.012"/>
-                                      <site name="seg2_v4_Ei" pos="0.006 0 0.012"/>
-                                      <site name="seg2_v4_Si" pos="0 -0.006 0.012"/>
-                                      <site name="seg2_v4_Wi" pos="-0.006 0 0.012"/>
+                                      <site name="seg2_v4_Ni" pos="0 0.004 0.012"/>
+                                      <site name="seg2_v4_Ei" pos="0.004 0 0.012"/>
+                                      <site name="seg2_v4_Si" pos="0 -0.004 0.012"/>
+                                      <site name="seg2_v4_Wi" pos="-0.004 0 0.012"/>
 
                                       <body name="seg2_v5" pos="0 0 0.012">
                                         <geom name="seg2_v5_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.70 0.40 1"/>
                                         <joint name="seg2_j5_pitch" type="hinge" axis="1 0 0"/>
-                                        <site name="seg2_v5_Ni" pos="0 0.006 0.012"/>
-                                        <site name="seg2_v5_Ei" pos="0.006 0 0.012"/>
-                                        <site name="seg2_v5_Si" pos="0 -0.006 0.012"/>
-                                        <site name="seg2_v5_Wi" pos="-0.006 0 0.012"/>
+                                        <site name="seg2_v5_Ni" pos="0 0.004 0.012"/>
+                                        <site name="seg2_v5_Ei" pos="0.004 0 0.012"/>
+                                        <site name="seg2_v5_Si" pos="0 -0.004 0.012"/>
+                                        <site name="seg2_v5_Wi" pos="-0.004 0 0.012"/>
 
                                         <body name="seg2_v6" pos="0 0 0.012">
                                           <geom name="seg2_v6_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.70 0.85 1"/>
                                           <joint name="seg2_j6_yaw" type="hinge" axis="0 1 0"/>
-                                          <site name="seg2_v6_Ni" pos="0 0.006 0.012"/>
-                                          <site name="seg2_v6_Ei" pos="0.006 0 0.012"/>
-                                          <site name="seg2_v6_Si" pos="0 -0.006 0.012"/>
-                                          <site name="seg2_v6_Wi" pos="-0.006 0 0.012"/>
+                                          <site name="seg2_v6_Ni" pos="0 0.004 0.012"/>
+                                          <site name="seg2_v6_Ei" pos="0.004 0 0.012"/>
+                                          <site name="seg2_v6_Si" pos="0 -0.004 0.012"/>
+                                          <site name="seg2_v6_Wi" pos="-0.004 0 0.012"/>
 
                                           <body name="seg2_v7" pos="0 0 0.012">
                                             <geom name="seg2_v7_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.40 0.90 1"/>
                                             <joint name="seg2_j7_pitch" type="hinge" axis="1 0 0"/>
-                                            <site name="seg2_v7_Ni" pos="0 0.006 0.012"/>
-                                            <site name="seg2_v7_Ei" pos="0.006 0 0.012"/>
-                                            <site name="seg2_v7_Si" pos="0 -0.006 0.012"/>
-                                            <site name="seg2_v7_Wi" pos="-0.006 0 0.012"/>
+                                            <site name="seg2_v7_Ni" pos="0 0.004 0.012"/>
+                                            <site name="seg2_v7_Ei" pos="0.004 0 0.012"/>
+                                            <site name="seg2_v7_Si" pos="0 -0.004 0.012"/>
+                                            <site name="seg2_v7_Wi" pos="-0.004 0 0.012"/>
 
                                             <body name="seg2_v8" pos="0 0 0.012">
                                               <geom name="seg2_v8_geom" fromto="0 0 0  0 0 0.012" rgba="0.45 0.20 0.95 1"/>
                                               <joint name="seg2_j8_yaw" type="hinge" axis="0 1 0"/>
-                                              <site name="seg2_v8_Ni" pos="0 0.006 0.012"/>
-                                              <site name="seg2_v8_Ei" pos="0.006 0 0.012"/>
-                                              <site name="seg2_v8_Si" pos="0 -0.006 0.012"/>
-                                              <site name="seg2_v8_Wi" pos="-0.006 0 0.012"/>
+                                              <site name="seg2_v8_Ni" pos="0 0.004 0.012"/>
+                                              <site name="seg2_v8_Ei" pos="0.004 0 0.012"/>
+                                              <site name="seg2_v8_Si" pos="0 -0.004 0.012"/>
+                                              <site name="seg2_v8_Wi" pos="-0.004 0 0.012"/>
 
                                               <body name="seg2_v9" pos="0 0 0.012">
                                                 <geom name="seg2_v9_geom" fromto="0 0 0  0 0 0.012" rgba="0.75 0.15 0.60 1"/>
                                                 <body name="seg2_v10" pos="0 0 0.012">
                                                   <geom name="seg2_v10_geom" fromto="0 0 0  0 0 0.012" rgba="0.35 0.35 0.35 1"/>
                                                   <site name="seg2_imu" pos="0 0 0.012"/>
-                                                  <site name="seg2_tip_Ni" pos="0 0.006 0.012"/>
-                                                  <site name="seg2_tip_Ei" pos="0.006 0 0.012"/>
-                                                  <site name="seg2_tip_Si" pos="0 -0.006 0.012"/>
-                                                  <site name="seg2_tip_Wi" pos="-0.006 0 0.012"/>
+                                                  <site name="seg2_tip_Ni" pos="0 0.004 0.012"/>
+                                                  <site name="seg2_tip_Ei" pos="0.004 0 0.012"/>
+                                                  <site name="seg2_tip_Si" pos="0 -0.004 0.012"/>
+                                                  <site name="seg2_tip_Wi" pos="-0.004 0 0.012"/>
 
                                                   <!-- ================= SEGMENT 3 ================= -->
                                                   <body name="seg3_base" pos="0 0 0.005">
-                                                    <site name="seg3_base_Ni" pos="0 0.006 0"/>
-                                                    <site name="seg3_base_Ei" pos="0.006 0 0"/>
-                                                    <site name="seg3_base_Si" pos="0 -0.006 0"/>
-                                                    <site name="seg3_base_Wi" pos="-0.006 0 0"/>
+                                                    <site name="seg3_base_Ni" pos="0 0.004 0"/>
+                                                    <site name="seg3_base_Ei" pos="0.004 0 0"/>
+                                                    <site name="seg3_base_Si" pos="0 -0.004 0"/>
+                                                    <site name="seg3_base_Wi" pos="-0.004 0 0"/>
 
                                                     <body name="seg3_v1" pos="0 0 0.012">
                                                       <geom name="seg3_v1_geom" fromto="0 0 0  0 0 0.012" rgba="0.90 0.10 0.10 1"/>
                                                       <joint name="seg3_j1_pitch" type="hinge" axis="1 0 0"/>
-                                                      <site name="seg3_v1_Ni" pos="0 0.006 0.012"/>
-                                                      <site name="seg3_v1_Ei" pos="0.006 0 0.012"/>
-                                                      <site name="seg3_v1_Si" pos="0 -0.006 0.012"/>
-                                                      <site name="seg3_v1_Wi" pos="-0.006 0 0.012"/>
+                                                      <site name="seg3_v1_Ni" pos="0 0.004 0.012"/>
+                                                      <site name="seg3_v1_Ei" pos="0.004 0 0.012"/>
+                                                      <site name="seg3_v1_Si" pos="0 -0.004 0.012"/>
+                                                      <site name="seg3_v1_Wi" pos="-0.004 0 0.012"/>
 
                                                       <body name="seg3_v2" pos="0 0 0.012">
                                                         <geom name="seg3_v2_geom" fromto="0 0 0  0 0 0.012" rgba="0.95 0.45 0.10 1"/>
                                                         <joint name="seg3_j2_yaw" type="hinge" axis="0 1 0"/>
-                                                        <site name="seg3_v2_Ni" pos="0 0.006 0.012"/>
-                                                        <site name="seg3_v2_Ei" pos="0.006 0 0.012"/>
-                                                        <site name="seg3_v2_Si" pos="0 -0.006 0.012"/>
-                                                        <site name="seg3_v2_Wi" pos="-0.006 0 0.012"/>
+                                                        <site name="seg3_v2_Ni" pos="0 0.004 0.012"/>
+                                                        <site name="seg3_v2_Ei" pos="0.004 0 0.012"/>
+                                                        <site name="seg3_v2_Si" pos="0 -0.004 0.012"/>
+                                                        <site name="seg3_v2_Wi" pos="-0.004 0 0.012"/>
 
                                                         <body name="seg3_v3" pos="0 0 0.012">
                                                           <geom name="seg3_v3_geom" fromto="0 0 0  0 0 0.012" rgba="0.98 0.80 0.10 1"/>
                                                           <joint name="seg3_j3_pitch" type="hinge" axis="1 0 0"/>
-                                                          <site name="seg3_v3_Ni" pos="0 0.006 0.012"/>
-                                                          <site name="seg3_v3_Ei" pos="0.006 0 0.012"/>
-                                                          <site name="seg3_v3_Si" pos="0 -0.006 0.012"/>
-                                                          <site name="seg3_v3_Wi" pos="-0.006 0 0.012"/>
+                                                          <site name="seg3_v3_Ni" pos="0 0.004 0.012"/>
+                                                          <site name="seg3_v3_Ei" pos="0.004 0 0.012"/>
+                                                          <site name="seg3_v3_Si" pos="0 -0.004 0.012"/>
+                                                          <site name="seg3_v3_Wi" pos="-0.004 0 0.012"/>
 
                                                           <body name="seg3_v4" pos="0 0 0.012">
                                                             <geom name="seg3_v4_geom" fromto="0 0 0  0 0 0.012" rgba="0.40 0.85 0.10 1"/>
                                                             <joint name="seg3_j4_yaw" type="hinge" axis="0 1 0"/>
-                                                            <site name="seg3_v4_Ni" pos="0 0.006 0.012"/>
-                                                            <site name="seg3_v4_Ei" pos="0.006 0 0.012"/>
-                                                            <site name="seg3_v4_Si" pos="0 -0.006 0.012"/>
-                                                            <site name="seg3_v4_Wi" pos="-0.006 0 0.012"/>
+                                                            <site name="seg3_v4_Ni" pos="0 0.004 0.012"/>
+                                                            <site name="seg3_v4_Ei" pos="0.004 0 0.012"/>
+                                                            <site name="seg3_v4_Si" pos="0 -0.004 0.012"/>
+                                                            <site name="seg3_v4_Wi" pos="-0.004 0 0.012"/>
 
                                                             <body name="seg3_v5" pos="0 0 0.012">
                                                               <geom name="seg3_v5_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.70 0.40 1"/>
                                                               <joint name="seg3_j5_pitch" type="hinge" axis="1 0 0"/>
-                                                              <site name="seg3_v5_Ni" pos="0 0.006 0.012"/>
-                                                              <site name="seg3_v5_Ei" pos="0.006 0 0.012"/>
-                                                              <site name="seg3_v5_Si" pos="0 -0.006 0.012"/>
-                                                              <site name="seg3_v5_Wi" pos="-0.006 0 0.012"/>
+                                                              <site name="seg3_v5_Ni" pos="0 0.004 0.012"/>
+                                                              <site name="seg3_v5_Ei" pos="0.004 0 0.012"/>
+                                                              <site name="seg3_v5_Si" pos="0 -0.004 0.012"/>
+                                                              <site name="seg3_v5_Wi" pos="-0.004 0 0.012"/>
 
                                                               <body name="seg3_v6" pos="0 0 0.012">
                                                                 <geom name="seg3_v6_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.70 0.85 1"/>
                                                                 <joint name="seg3_j6_yaw" type="hinge" axis="0 1 0"/>
-                                                                <site name="seg3_v6_Ni" pos="0 0.006 0.012"/>
-                                                                <site name="seg3_v6_Ei" pos="0.006 0 0.012"/>
-                                                                <site name="seg3_v6_Si" pos="0 -0.006 0.012"/>
-                                                                <site name="seg3_v6_Wi" pos="-0.006 0 0.012"/>
+                                                                <site name="seg3_v6_Ni" pos="0 0.004 0.012"/>
+                                                                <site name="seg3_v6_Ei" pos="0.004 0 0.012"/>
+                                                                <site name="seg3_v6_Si" pos="0 -0.004 0.012"/>
+                                                                <site name="seg3_v6_Wi" pos="-0.004 0 0.012"/>
 
                                                                 <body name="seg3_v7" pos="0 0 0.012">
                                                                   <geom name="seg3_v7_geom" fromto="0 0 0  0 0 0.012" rgba="0.10 0.40 0.90 1"/>
                                                                   <joint name="seg3_j7_pitch" type="hinge" axis="1 0 0"/>
-                                                                  <site name="seg3_v7_Ni" pos="0 0.006 0.012"/>
-                                                                  <site name="seg3_v7_Ei" pos="0.006 0 0.012"/>
-                                                                  <site name="seg3_v7_Si" pos="0 -0.006 0.012"/>
-                                                                  <site name="seg3_v7_Wi" pos="-0.006 0 0.012"/>
+                                                                  <site name="seg3_v7_Ni" pos="0 0.004 0.012"/>
+                                                                  <site name="seg3_v7_Ei" pos="0.004 0 0.012"/>
+                                                                  <site name="seg3_v7_Si" pos="0 -0.004 0.012"/>
+                                                                  <site name="seg3_v7_Wi" pos="-0.004 0 0.012"/>
 
                                                                   <body name="seg3_v8" pos="0 0 0.012">
                                                                     <geom name="seg3_v8_geom" fromto="0 0 0  0 0 0.012" rgba="0.45 0.20 0.95 1"/>
                                                                     <joint name="seg3_j8_yaw" type="hinge" axis="0 1 0"/>
-                                                                    <site name="seg3_v8_Ni" pos="0 0.006 0.012"/>
-                                                                    <site name="seg3_v8_Ei" pos="0.006 0 0.012"/>
-                                                                    <site name="seg3_v8_Si" pos="0 -0.006 0.012"/>
-                                                                    <site name="seg3_v8_Wi" pos="-0.006 0 0.012"/>
+                                                                    <site name="seg3_v8_Ni" pos="0 0.004 0.012"/>
+                                                                    <site name="seg3_v8_Ei" pos="0.004 0 0.012"/>
+                                                                    <site name="seg3_v8_Si" pos="0 -0.004 0.012"/>
+                                                                    <site name="seg3_v8_Wi" pos="-0.004 0 0.012"/>
 
                                                                     <body name="seg3_v9" pos="0 0 0.012">
                                                                       <geom name="seg3_v9_geom" fromto="0 0 0  0 0 0.012" rgba="0.75 0.15 0.60 1"/>
@@ -265,10 +267,10 @@
                                                                         <site name="seg3_imu" pos="0 0 0.012"/>
                                                                         <site name="tip_site" pos="0 0 0.012"/>
                                                                         <geom name="tip_sphere" type="sphere" size="0.0025" pos="0 0 0.012" rgba="0.9 0.2 0.2 1"/>
-                                                                        <site name="seg3_tip_Ni" pos="0 0.006 0.012"/>
-                                                                        <site name="seg3_tip_Ei" pos="0.006 0 0.012"/>
-                                                                        <site name="seg3_tip_Si" pos="0 -0.006 0.012"/>
-                                                                        <site name="seg3_tip_Wi" pos="-0.006 0 0.012"/>
+                                                                        <site name="seg3_tip_Ni" pos="0 0.004 0.012"/>
+                                                                        <site name="seg3_tip_Ei" pos="0.004 0 0.012"/>
+                                                                        <site name="seg3_tip_Si" pos="0 -0.004 0.012"/>
+                                                                        <site name="seg3_tip_Wi" pos="-0.004 0 0.012"/>
                                                                       </body>
                                                                     </body>
                                                                   </body>

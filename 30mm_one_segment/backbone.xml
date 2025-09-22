@@ -1,0 +1,14 @@
+<mujoco model="backbone">
+    <option integrator="Euler" timestep="0.001"/>
+    
+    <worldbody>
+        <body name="seg1_base" pos="0 0 0.000">
+            <geom name="seg1_v1_geom" fromto="0 0 0  0 0 0.012" rgba="0.90 0.10 0.10 1"/>
+            <joint name="seg1_j1_pitch" type="hinge" axis="1 0 0"/>
+            <site name="seg1_h1_N" pos="0 0.010 0.000"/>
+            <site name="seg1_h1_E" pos="0.010 0 0.000"/>
+            <site name="seg1_h1_S" pos="0 -0.010 0.000"/>
+            <site name="seg1_h1_W" pos="-0.010 0 0.000"/>
+        </body>
+    </worldbody>
+</mujoco>
