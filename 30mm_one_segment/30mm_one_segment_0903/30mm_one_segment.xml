@@ -17,75 +17,6 @@
             <geom name="geom_comp_root" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
             <inertial mass="0.034962578305385045" pos="-7.472585541467528e-08 7.901881324749933e-09 0.00013813391178014084" fullinertia="3.055182113221844e-06 2.848652002682884e-06 5.213750324900917e-06 -4.694970745810055e-12 -1.2612174129223041e-11 1.8838018378797825e-12" />
             
-            <!-- ───────── 중앙 백본(스프링 역할) ───────── -->
-            <body name="bb_frame" pos="0.01794 0 -0.0075" quat="0.70710678 0 0 0.70710678">
-            <!-- fromto는 프레임 로컬 z축으로 -60mm ~ +60mm -->
-            <composite type="cable" prefix="bb_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
-                <!-- ex4.xml과 동일한 케이블 플러그인(단, 백본이라 강성↑) -->
-                <plugin plugin="mujoco.elasticity.cable">
-                    <config key="twist" value="6e7"/>
-                    <config key="bend"  value="3e7"/>
-                    <config key="vmax"  value="0.05"/>
-                </plugin>
-                <!-- 케이블 관절: 백본 탄성/댐핑 -->
-                <joint kind="main" damping="0.05" stiffness="150" frictionloss="0"/>
-                <!-- 지름: 2.5mm(구멍 내경보다 살짝 작게) -->
-                <geom type="capsule" size="0.0025" density="7800" condim="3"
-                    friction="0.6 0.01 0.0001" rgba=".75 .75 .8 1"/>
-            </composite>
-            </body>
-            <!-- +X 방향 홀: center + ( +0.0105, 0, 0 ) = (0.02844, 0, -0.0075) -->
-            <body name="ten_px_frame" pos="0.02844 0 -0.0075" quat="0.70710678 0 0 0.70710678">
-            <composite type="cable" prefix="ten_px_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
-                <plugin plugin="mujoco.elasticity.cable">
-                    <config key="twist" value="5e7"/>
-                    <config key="bend"  value="2e7"/>
-                    <config key="vmax"  value="0.05"/>
-                </plugin>
-                <joint kind="main" damping="0.03" frictionloss="0"/>
-                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
-            </composite>
-            </body>
-
-            <!-- -X 방향 홀: center + ( -0.0105, 0, 0 ) = (0.00744, 0, -0.0075) -->
-            <body name="ten_nx_frame" pos="0.00744 0 -0.0075" quat="0.70710678 0 0 0.70710678">
-            <composite type="cable" prefix="ten_nx_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
-                <plugin plugin="mujoco.elasticity.cable">
-                    <config key="twist" value="5e7"/>
-                    <config key="bend"  value="2e7"/>
-                    <config key="vmax"  value="0.05"/>
-                </plugin>
-                <joint kind="main" damping="0.03" frictionloss="0"/>
-                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
-            </composite>
-            </body>
-
-            <!-- +Y 방향 홀: center + ( 0, +0.0105, 0 ) = (0.01794, 0.0105, -0.0075) -->
-            <body name="ten_py_frame" pos="0.01794 0.0105 -0.0075" quat="0.70710678 0 0 0.70710678">
-            <composite type="cable" prefix="ten_py_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
-                <plugin plugin="mujoco.elasticity.cable">
-                    <config key="twist" value="5e7"/>
-                    <config key="bend"  value="2e7"/>
-                    <config key="vmax"  value="0.05"/>
-                </plugin>
-                <joint kind="main" damping="0.03" frictionloss="0"/>
-                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
-            </composite>
-            </body>
-
-            <!-- -Y 방향 홀: center + ( 0, -0.0105, 0 ) = (0.01794, -0.0105, -0.0075) -->
-            <body name="ten_ny_frame" pos="0.01794 -0.0105 -0.0075" quat="0.70710678 0 0 0.70710678">
-            <composite type="cable" prefix="ten_ny_" curve="s" count="60 1 1" size="0.002034" offset="-0.06 0 0" initial="none">
-                <plugin plugin="mujoco.elasticity.cable">
-                    <config key="twist" value="5e7"/>
-                    <config key="bend"  value="2e7"/>
-                    <config key="vmax"  value="0.05"/>
-                </plugin>
-                <joint kind="main" damping="0.03" frictionloss="0"/>
-                <geom type="capsule" size="0.00145" density="7800" condim="3" friction="0.5 0.005 0.0001" rgba=".9 .2 .1 1"/>
-            </composite>
-            </body>
-
             <body name="comp_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
                 <joint name="rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" /> <!--joint axis: 이 조인트가 어느 방향으로 움직이는지, pos: 조인트의 앵커(회전/이동이 일어나는 점) 위치-->
                 <geom name="geom_comp_1" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
@@ -120,6 +51,107 @@
                                         <joint name="rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                                         <geom name="geom_comp_7" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                                         <inertial mass="0.034962578305385045" pos="-7.472585541316211e-08 7.901881324746632e-09 0.00013813391178015339" fullinertia="3.0551821132217585e-06 2.8486520026828353e-06 5.213750324900921e-06 -4.6949707458100884e-12 -1.2612174111020612e-11 1.883801837683386e-12" />
+                                                <!-- ================= SEGMENT 2 ================= -->
+                                        <body name="seg2_base" pos="0 0 0.005">
+                                            <body name="seg2_v1" pos="0 0 0.0075">
+                                                <geom name="seg2_v1_geom" fromto="0 0 0  0 0 0.012"/>
+                                                <joint name="seg2_j1_pitch" type="hinge" axis="1 0 0"/>
+
+                                                <body name="seg2_v2" pos="0 0 0.012">
+                                                    <geom name="seg2_v2_geom" fromto="0 0 0  0 0 0.012"/>
+                                                    <joint name="seg2_j2_yaw" type="hinge" axis="0 1 0"/>
+
+                                                    <body name="seg2_v3" pos="0 0 0.012">
+                                                        <geom name="seg2_v3_geom" fromto="0 0 0  0 0 0.012"/>
+                                                        <joint name="seg2_j3_pitch" type="hinge" axis="1 0 0"/>
+
+                                                        <body name="seg2_v4" pos="0 0 0.012">
+                                                            <geom name="seg2_v4_geom" fromto="0 0 0  0 0 0.012"/>
+                                                            <joint name="seg2_j4_yaw" type="hinge" axis="0 1 0"/>
+
+                                                            <body name="seg2_v5" pos="0 0 0.012">
+                                                                <geom name="seg2_v5_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                <joint name="seg2_j5_pitch" type="hinge" axis="1 0 0"/>
+
+                                                                <body name="seg2_v6" pos="0 0 0.012">
+                                                                    <geom name="seg2_v6_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                    <joint name="seg2_j6_yaw" type="hinge" axis="0 1 0"/>
+
+                                                                    <body name="seg2_v7" pos="0 0 0.012">
+                                                                        <geom name="seg2_v7_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                        <joint name="seg2_j7_pitch" type="hinge" axis="1 0 0"/>
+
+                                                                        <body name="seg2_v8" pos="0 0 0.012">
+                                                                            <geom name="seg2_v8_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                            <joint name="seg2_j8_yaw" type="hinge" axis="0 1 0"/>
+
+                                                                            <body name="seg2_v9" pos="0 0 0.012">
+                                                                                <geom name="seg2_v9_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                    <body name="seg2_v10" pos="0 0 0.012">
+                                                                                    <geom name="seg2_v10_geom" fromto="0 0 0  0 0 0.012"/>
+
+
+                                                                                <!-- ================= SEGMENT 3 ================= -->
+
+                                                                                    <body name="seg3_base" pos="0 0 0.005">
+                                                                                        <body name="seg3_v1" pos="0 0 0.012">
+                                                                                            <geom name="seg3_v1_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                            <joint name="seg3_j1_pitch" type="hinge" axis="1 0 0"/>
+
+                                                                                            <body name="seg3_v2" pos="0 0 0.012">
+                                                                                                <geom name="seg3_v2_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                <joint name="seg3_j2_yaw" type="hinge" axis="0 1 0"/>
+
+                                                                                                <body name="seg3_v3" pos="0 0 0.012">
+                                                                                                    <geom name="seg3_v3_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                    <joint name="seg3_j3_pitch" type="hinge" axis="1 0 0"/>
+
+                                                                                                    <body name="seg3_v4" pos="0 0 0.012">
+                                                                                                        <geom name="seg3_v4_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                        <joint name="seg3_j4_yaw" type="hinge" axis="0 1 0"/>
+
+                                                                                                        <body name="seg3_v5" pos="0 0 0.012">
+                                                                                                            <geom name="seg3_v5_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                            <joint name="seg3_j5_pitch" type="hinge" axis="1 0 0"/>
+
+                                                                                                            <body name="seg3_v6" pos="0 0 0.012">
+                                                                                                                <geom name="seg3_v6_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                                <joint name="seg3_j6_yaw" type="hinge" axis="0 1 0"/>
+
+                                                                                                                <body name="seg3_v7" pos="0 0 0.012">
+                                                                                                                    <geom name="seg3_v7_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                                    <joint name="seg3_j7_pitch" type="hinge" axis="1 0 0"/>
+
+                                                                                                                    <body name="seg3_v8" pos="0 0 0.012">
+                                                                                                                        <geom name="seg3_v8_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                                        <joint name="seg3_j8_yaw" type="hinge" axis="0 1 0"/>
+
+                                                                                                                        <body name="seg3_v9" pos="0 0 0.012">
+                                                                                                                            <geom name="seg3_v9_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                                            <body name="seg3_v10" pos="0 0 0.012">
+                                                                                                                                <geom name="seg3_v10_geom" fromto="0 0 0  0 0 0.012"/>
+                                                                                                                            </body>
+                                                                                                                        </body>
+                                                                                                                    </body>
+                                                                                                                </body>
+                                                                                                            </body>
+                                                                                                        </body>
+                                                                                                    </body>
+                                                                                                </body>
+                                                                                            </body>
+                                                                                        </body>
+                                                                                    </body>
+                                                                                </body>
+                                                                            </body>
+                                                                        </body>
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
                                     </body>
                                 </body>
                             </body>
@@ -129,25 +161,13 @@
             </body>
         </body>
     </worldbody>
-    <equality>
-        <!-- Backbone -->
-        <weld body1="bb_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
-        <weld body1="bb_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
 
-        <!-- +X tendon -->
-        <weld body1="ten_px_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
-        <weld body1="ten_px_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
-
-        <!-- -X tendon -->
-        <weld body1="ten_nx_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
-        <weld body1="ten_nx_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
-
-        <!-- +Y tendon -->
-        <weld body1="ten_py_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
-        <weld body1="ten_py_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
-
-        <!-- -Y tendon -->
-        <weld body1="ten_ny_B0"  body2="comp_root" solref=".002 1" solimp=".9 .95 .001"/>
-        <weld body1="ten_ny_B59" body2="comp_7"    solref=".002 1" solimp=".9 .95 .001"/>
-    </equality>
 </mujoco>
+
+
+
+    <!-- <position name="u_seg2_j1" joint="seg2_j1_pitch" kp="200" ctrlrange="-0.5 0.5"/>
+    <position name="u_seg2_j2" joint="seg2_j2_yaw"   kp="200" ctrlrange="-0.5 0.5"/>
+    
+    <position name="u_seg3_j1" joint="seg3_j1_pitch" kp="200" ctrlrange="-0.5 0.5"/>
+    <position name="u_seg3_j2" joint="seg3_j2_yaw"   kp="200" ctrlrange="-0.5 0.5"/> -->

@@ -3,6 +3,11 @@
     <compiler angle="degree" coordinate="local"/>
     <option integrator="Euler" timestep="0.001"/>
 
+    <extension>
+        <plugin plugin="mujoco.elasticity.cable"/>
+    </extension>
+
+    <compiler autolimits="true"/>
     <default>
       <joint limited="true" range="-4 4" stiffness="0.04" damping="0.005" armature="0.0001"/>
 
@@ -31,293 +36,245 @@
       <mesh name="mesh_component2" file="meshes/mesh_component2.stl" scale="0.001 0.001 0.001" /> <!-- The mesh file for the component -->
     </asset>
     <worldbody>
-      <body name="comp_root" pos="0 0 0" quat="1 0 0 0">
-        <geom name="geom_comp_root" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
-        <joint name="rotation_root" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-        <inertial mass="0.034962578305385045" pos="-7.472585541467528e-08 7.901881324749933e-09 0.00013813391178014084" fullinertia="3.055182113221844e-06 2.848652002682884e-06 5.213750324900917e-06 -4.694970745810055e-12 -1.2612174129223041e-11 1.8838018378797825e-12" />
-        <geom class="proxy" name="proxy_root_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-        <geom class="proxy" name="proxy_root_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-        <geom class="proxy" name="proxy_root_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-        <geom class="proxy" name="proxy_root_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-        <geom class="proxy" name="proxy_root_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-        <geom class="proxy" name="proxy_root_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-        <geom class="proxy" name="proxy_root_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-        <geom class="proxy" name="proxy_root_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+        <!-- ===================== stl_mesh ===================== -->
+        <body name="comp_root" pos="0 0 0" quat="1 0 0 0">
+            <geom name="geom_comp_root" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
+            <joint name="rotation_root" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+            <inertial mass="0.034962578305385045" pos="-7.472585541467528e-08 7.901881324749933e-09 0.00013813391178014084" fullinertia="3.055182113221844e-06 2.848652002682884e-06 5.213750324900917e-06 -4.694970745810055e-12 -1.2612174129223041e-11 1.8838018378797825e-12" />
+            <site name="S1_root" pos="0 0 0.03" size="0.0016" rgba="1 0 0 1"/>
+            <geom class="proxy" name="proxy_root_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+            <geom class="proxy" name="proxy_root_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+            <geom class="proxy" name="proxy_root_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+            <geom class="proxy" name="proxy_root_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+            <geom class="proxy" name="proxy_root_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+            <geom class="proxy" name="proxy_root_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+            <geom class="proxy" name="proxy_root_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+            <geom class="proxy" name="proxy_root_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-        <body name="comp_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
-          <joint name="rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" /> <!--joint axis: 이 조인트가 어느 방향으로 움직이는지, pos: 조인트의 앵커(회전/이동이 일어나는 점) 위치-->
-          <geom name="geom_comp_1" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-          <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324746635e-09 0.00013813391178014496" fullinertia="3.0551821132218284e-06 2.8486520026829268e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.8838018376833885e-12" />
-          <geom class="proxy" name="proxy_1_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-          <geom class="proxy" name="proxy_1_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-          <geom class="proxy" name="proxy_1_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-          <geom class="proxy" name="proxy_1_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-          <geom class="proxy" name="proxy_1_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-          <geom class="proxy" name="proxy_1_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-          <geom class="proxy" name="proxy_1_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-          <geom class="proxy" name="proxy_1_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+            <body name="comp_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                <joint name="rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" /> <!--joint axis: 이 조인트가 어느 방향으로 움직이는지, pos: 조인트의 앵커(회전/이동이 일어나는 점) 위치-->
+                <geom name="geom_comp_1" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324746635e-09 0.00013813391178014496" fullinertia="3.0551821132218284e-06 2.8486520026829268e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.8838018376833885e-12" />
+                <geom class="proxy" name="proxy_1_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                <geom class="proxy" name="proxy_1_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                <geom class="proxy" name="proxy_1_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+                <geom class="proxy" name="proxy_1_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+                <geom class="proxy" name="proxy_1_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                <geom class="proxy" name="proxy_1_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                <geom class="proxy" name="proxy_1_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                <geom class="proxy" name="proxy_1_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-          <body name="comp_2" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
-            <joint name="rotation_2" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-            <geom name="geom_comp_2" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-            <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324746635e-09 0.00013813391178014273" fullinertia="3.0551821132218267e-06 2.84865200268293e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.8838018376833877e-12" />
-            <geom class="proxy" name="proxy_2_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-            <geom class="proxy" name="proxy_2_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-            <geom class="proxy" name="proxy_2_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-            <geom class="proxy" name="proxy_2_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-            <geom class="proxy" name="proxy_2_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-            <geom class="proxy" name="proxy_2_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-            <geom class="proxy" name="proxy_2_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-            <geom class="proxy" name="proxy_2_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                <body name="comp_2" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                    <joint name="rotation_2" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+                    <geom name="geom_comp_2" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                    <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324746635e-09 0.00013813391178014273" fullinertia="3.0551821132218267e-06 2.84865200268293e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.8838018376833877e-12" />
+                    <geom class="proxy" name="proxy_2_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                    <geom class="proxy" name="proxy_2_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                    <geom class="proxy" name="proxy_2_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+                    <geom class="proxy" name="proxy_2_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+                    <geom class="proxy" name="proxy_2_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                    <geom class="proxy" name="proxy_2_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                    <geom class="proxy" name="proxy_2_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                    <geom class="proxy" name="proxy_2_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-            <body name="comp_3" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
-              <joint name="rotation_3" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-              <geom name="geom_comp_3" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-              <inertial mass="0.034962578305385045" pos="-7.47258554145445e-08 7.901881324746637e-09 0.00013813391178014273" fullinertia="3.0551821132218403e-06 2.84865200268293e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.883801837683387e-12" />
-              <geom class="proxy" name="proxy_3_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-              <geom class="proxy" name="proxy_3_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-              <geom class="proxy" name="proxy_3_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-              <geom class="proxy" name="proxy_3_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-              <geom class="proxy" name="proxy_3_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-              <geom class="proxy" name="proxy_3_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-              <geom class="proxy" name="proxy_3_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-              <geom class="proxy" name="proxy_3_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                    <body name="comp_3" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                        <joint name="rotation_3" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+                        <geom name="geom_comp_3" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                        <inertial mass="0.034962578305385045" pos="-7.47258554145445e-08 7.901881324746637e-09 0.00013813391178014273" fullinertia="3.0551821132218403e-06 2.84865200268293e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.883801837683387e-12" />
+                        <geom class="proxy" name="proxy_3_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                        <geom class="proxy" name="proxy_3_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                        <geom class="proxy" name="proxy_3_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+                        <geom class="proxy" name="proxy_3_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+                        <geom class="proxy" name="proxy_3_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                        <geom class="proxy" name="proxy_3_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                        <geom class="proxy" name="proxy_3_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                        <geom class="proxy" name="proxy_3_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-              <body name="comp_4" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
-                <joint name="rotation_4" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-                <geom name="geom_comp_4" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-                <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324015413e-09 0.00013813391178015038" fullinertia="3.055182113221813e-06 2.8486520026828874e-06 5.213750324900898e-06 -4.69497074581008e-12 -1.2612174121400061e-11 1.8838018335764905e-12" />
-                <geom class="proxy" name="proxy_4_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-                <geom class="proxy" name="proxy_4_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-                <geom class="proxy" name="proxy_4_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-                <geom class="proxy" name="proxy_4_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-                <geom class="proxy" name="proxy_4_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-                <geom class="proxy" name="proxy_4_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-                <geom class="proxy" name="proxy_4_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-                <geom class="proxy" name="proxy_4_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                        <body name="comp_4" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                            <joint name="rotation_4" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+                            <geom name="geom_comp_4" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                            <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324015413e-09 0.00013813391178015038" fullinertia="3.055182113221813e-06 2.8486520026828874e-06 5.213750324900898e-06 -4.69497074581008e-12 -1.2612174121400061e-11 1.8838018335764905e-12" />
+                            <geom class="proxy" name="proxy_4_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                            <geom class="proxy" name="proxy_4_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                            <geom class="proxy" name="proxy_4_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+                            <geom class="proxy" name="proxy_4_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+                            <geom class="proxy" name="proxy_4_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                            <geom class="proxy" name="proxy_4_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                            <geom class="proxy" name="proxy_4_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                            <geom class="proxy" name="proxy_4_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-                <body name="comp_5" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
-                  <joint name="rotation_5" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-                  <geom name="geom_comp_5" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-                  <inertial mass="0.034962578305385045" pos="-7.472585541496629e-08 7.901881324746634e-09 0.0001381339117801356" fullinertia="3.0551821132218623e-06 2.8486520026829437e-06 5.213750324900904e-06 -4.694970745810083e-12 -1.261217412324965e-11 1.883801837683382e-12" />
-                  <geom class="proxy" name="proxy_5_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-                  <geom class="proxy" name="proxy_5_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-                  <geom class="proxy" name="proxy_5_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-                  <geom class="proxy" name="proxy_5_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-                  <geom class="proxy" name="proxy_5_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-                  <geom class="proxy" name="proxy_5_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-                  <geom class="proxy" name="proxy_5_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-                  <geom class="proxy" name="proxy_5_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                            <body name="comp_5" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                <joint name="rotation_5" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+                                <geom name="geom_comp_5" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                <inertial mass="0.034962578305385045" pos="-7.472585541496629e-08 7.901881324746634e-09 0.0001381339117801356" fullinertia="3.0551821132218623e-06 2.8486520026829437e-06 5.213750324900904e-06 -4.694970745810083e-12 -1.261217412324965e-11 1.883801837683382e-12" />
+                                <geom class="proxy" name="proxy_5_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                                <geom class="proxy" name="proxy_5_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                                <geom class="proxy" name="proxy_5_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+                                <geom class="proxy" name="proxy_5_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+                                <geom class="proxy" name="proxy_5_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                                <geom class="proxy" name="proxy_5_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                                <geom class="proxy" name="proxy_5_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                                <geom class="proxy" name="proxy_5_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-                  <body name="comp_6" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
-                    <joint name="rotation_6" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-                    <geom name="geom_comp_6" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-                    <inertial mass="0.034962578305385045" pos="-7.472585541454451e-08 7.901881323397079e-09 0.00013813391178015924" fullinertia="3.0551821132217047e-06 2.8486520026828886e-06 5.213750324900898e-06 -4.6949707458100755e-12 -1.261217412140013e-11 1.883801832570639e-12" />
-                    <geom class="proxy" name="proxy_6_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-                    <geom class="proxy" name="proxy_6_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-                    <geom class="proxy" name="proxy_6_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
-                    <geom class="proxy" name="proxy_6_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
-                    <geom class="proxy" name="proxy_6_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-                    <geom class="proxy" name="proxy_6_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-                    <geom class="proxy" name="proxy_6_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-                    <geom class="proxy" name="proxy_6_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                                <body name="comp_6" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                    <joint name="rotation_6" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+                                    <geom name="geom_comp_6" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                    <inertial mass="0.034962578305385045" pos="-7.472585541454451e-08 7.901881323397079e-09 0.00013813391178015924" fullinertia="3.0551821132217047e-06 2.8486520026828886e-06 5.213750324900898e-06 -4.6949707458100755e-12 -1.261217412140013e-11 1.883801832570639e-12" />
+                                    <geom class="proxy" name="proxy_6_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                                    <geom class="proxy" name="proxy_6_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                                    <geom class="proxy" name="proxy_6_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
+                                    <geom class="proxy" name="proxy_6_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/>
+                                    <geom class="proxy" name="proxy_6_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                                    <geom class="proxy" name="proxy_6_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                                    <geom class="proxy" name="proxy_6_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                                    <geom class="proxy" name="proxy_6_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
-                    <body name="comp_7" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
-                        <joint name="rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
-                        <geom name="geom_comp_7" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
-                        <inertial mass="0.034962578305385045" pos="-7.472585541316211e-08 7.901881324746632e-09 0.00013813391178015339" fullinertia="3.0551821132217585e-06 2.8486520026828353e-06 5.213750324900921e-06 -4.6949707458100884e-12 -1.2612174111020612e-11 1.883801837683386e-12" />
-                        <geom class="proxy" name="proxy_7_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
-                        <geom class="proxy" name="proxy_7_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
-                        <geom class="proxy" name="proxy_7_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>  
-                        <geom class="proxy" name="proxy_7_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/> 
-                        <geom class="proxy" name="proxy_7_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
-                        <geom class="proxy" name="proxy_7_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
-                        <geom class="proxy" name="proxy_7_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
-                        <geom class="proxy" name="proxy_7_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
-                    </body>
-                  </body>
-                </body>
-              </body>
-            </body>
-          </body>
-        </body>
-      </body>
-
-      <!-- ===================== Backbone =====================-->
-      <body name="base" pos="0 0 0">
-      <!-- ================= SEGMENT 1 ================= -->
-        <body name="seg1_base" pos="0 0 -0.015">
-          <body name="seg1_v1" pos="0 0 0">
-            <geom name="seg1_v1_geom" fromto="0 0 0  0 0 0.0075" rgba="0.90 0.10 0.10 1"/>
-            
-            <body name="seg1_v2" pos="0 0 0.0075">
-              <geom name="seg1_v2_geom" fromto="0 0 0  0 0 0.015" rgba="0.95 0.45 0.10 1"/>
-              <joint name="seg1_j2_pitch" type="hinge" axis="-1 0 0"/>
-
-              <body name="seg1_v3" pos="0 0 0.015">
-                <geom name="seg1_v3_geom" fromto="0 0 0  0 0 0.015" rgba="0.98 0.80 0.10 1"/>
-                <joint name="seg1_j3_yaw" type="hinge" axis="0 -1 0"/>
-
-                <body name="seg1_v4" pos="0 0 0.015">
-                  <geom name="seg1_v4_geom" fromto="0 0 0  0 0 0.015" rgba="0.40 0.85 0.10 1"/>
-                  <joint name="seg1_j4_pitch" type="hinge" axis="-1 0 0"/>
-
-                <body name="seg1_v5" pos="0 0 0.015">
-                  <geom name="seg1_v5_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.70 0.40 1"/>
-                  <joint name="seg1_j5_yaw" type="hinge" axis="0 -1 0"/>
-
-                  <body name="seg1_v6" pos="0 0 0.015">
-                    <geom name="seg1_v6_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.70 0.85 1"/>
-                    <joint name="seg1_j6_pitch" type="hinge" axis="-1 0 0"/>
-
-                    <body name="seg1_v7" pos="0 0 0.015">
-                      <geom name="seg1_v7_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.40 0.90 1"/>
-                      <joint name="seg1_j7_yaw" type="hinge" axis="0 -1 0"/>
-
-                      <body name="seg1_v8" pos="0 0 0.015">
-                        <geom name="seg1_v8_geom" fromto="0 0 0  0 0 0.015" rgba="0.45 0.20 0.95 1"/>
-                        <joint name="seg1_j8_pitch" type="hinge" axis="-1 0 0"/>
-
-                        <body name="seg1_v9" pos="0 0 0.015" >
-                          <geom name="seg1_v9_geom" fromto="0 0 0  0 0 0.015" rgba="0.75 0.15 0.60 1"/>
-                          <joint name="seg1_j9_yaw" type="hinge" axis="0 -1 0"/>
-
-                          <body name="seg1_v10" pos="0 0 0.0075">
-                            <geom name="seg1_v10_geom" fromto="0 0 0  0 0 0.0075" rgba="0.35 0.35 0.35 1"/>
-                          </body>
+                                    <body name="comp_7" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                        <joint name="rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
+                                        <geom name="geom_comp_7" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                        <inertial mass="0.034962578305385045" pos="-7.472585541316211e-08 7.901881324746632e-09 0.00013813391178015339" fullinertia="3.0551821132217585e-06 2.8486520026828353e-06 5.213750324900921e-06 -4.6949707458100884e-12 -1.2612174111020612e-11 1.883801837683386e-12" />
+                                        <geom class="proxy" name="proxy_7_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
+                                        <geom class="proxy" name="proxy_7_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
+                                        <geom class="proxy" name="proxy_7_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>  
+                                        <geom class="proxy" name="proxy_7_3" type="capsule" size="0.0008 0.004" pos="-0.005303  0.005303 0"/> 
+                                        <geom class="proxy" name="proxy_7_4" type="capsule" size="0.0008 0.004" pos="-0.007500  0.000000 0"/>
+                                        <geom class="proxy" name="proxy_7_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
+                                        <geom class="proxy" name="proxy_7_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
+                                        <geom class="proxy" name="proxy_7_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                                    </body>
+                                </body>
+                            </body>
                         </body>
-                      </body>
                     </body>
-                  </body>
                 </body>
-              </body>
             </body>
-          </body>
         </body>
-      </body>
+
+        <!-- ===================== Backbone =====================-->
+        <body name="base" pos="0 0 0">
+        <!-- ================= SEGMENT 1 ================= -->
+            <body name="seg1_base" pos="0 0 -0.015">
+                <body name="seg1_v1" pos="0 0 0">
+                    <geom name="seg1_v1_geom" fromto="0 0 0  0 0 0.0075" rgba="0.90 0.10 0.10 1"/>
+                    
+                    <body name="seg1_v2" pos="0 0 0.0075">
+                        <geom name="seg1_v2_geom" fromto="0 0 0  0 0 0.015" rgba="0.95 0.45 0.10 1"/>
+                        <joint name="seg1_j2_pitch" type="hinge" axis="-1 0 0"/>
+
+                        <body name="seg1_v3" pos="0 0 0.015">
+                            <geom name="seg1_v3_geom" fromto="0 0 0  0 0 0.015" rgba="0.98 0.80 0.10 1"/>
+                            <joint name="seg1_j3_yaw" type="hinge" axis="0 -1 0"/>
+
+                            <body name="seg1_v4" pos="0 0 0.015">
+                                <geom name="seg1_v4_geom" fromto="0 0 0  0 0 0.015" rgba="0.40 0.85 0.10 1"/>
+                                <joint name="seg1_j4_pitch" type="hinge" axis="-1 0 0"/>
+
+                                <body name="seg1_v5" pos="0 0 0.015">
+                                    <geom name="seg1_v5_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.70 0.40 1"/>
+                                    <joint name="seg1_j5_yaw" type="hinge" axis="0 -1 0"/>
+
+                                    <body name="seg1_v6" pos="0 0 0.015">
+                                        <geom name="seg1_v6_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.70 0.85 1"/>
+                                        <joint name="seg1_j6_pitch" type="hinge" axis="-1 0 0"/>
+
+                                        <body name="seg1_v7" pos="0 0 0.015">
+                                        <geom name="seg1_v7_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.40 0.90 1"/>
+                                        <joint name="seg1_j7_yaw" type="hinge" axis="0 -1 0"/>
+
+                                        <body name="seg1_v8" pos="0 0 0.015">
+                                            <geom name="seg1_v8_geom" fromto="0 0 0  0 0 0.015" rgba="0.45 0.20 0.95 1"/>
+                                            <joint name="seg1_j8_pitch" type="hinge" axis="-1 0 0"/>
+
+                                            <body name="seg1_v9" pos="0 0 0.015" >
+                                            <geom name="seg1_v9_geom" fromto="0 0 0  0 0 0.015" rgba="0.75 0.15 0.60 1"/>
+                                            <joint name="seg1_j9_yaw" type="hinge" axis="0 -1 0"/>
+
+                                                <body name="seg1_v10" pos="0 0 0.0075">
+                                                    <geom name="seg1_v10_geom" fromto="0 0 0  0 0 0.0075" rgba="0.35 0.35 0.35 1"/>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
     </body>
+        <!--===================== tendon_1 =====================-->
+        <composite type="cable" prefix="tendon1_" curve="s" count="70 1 1" size="0.13" offset="0.0105 0 0.11" quat="0.707 0 0.707 0" initial="none">
+            <plugin plugin="mujoco.elasticity.cable">
+                <!--Units are in Pa (SI)-->
+                <config key="twist" value="5e7"/>
+                <config key="bend" value="2e7"/>
+                <config key="vmax" value="0.05"/>
+            </plugin>
+            <joint kind="main" damping=".03" frictionloss="0.0"/>
+            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+        </composite>
+        <!--===================== tendon_2 =====================-->
+        <composite type="cable" prefix="tendon2_" curve="s" count="70 1 1" size="0.13" offset="-0.0105 0 0.11" quat="0.707 0 0.707 0" initial="none">
+            <plugin plugin="mujoco.elasticity.cable">
+                <!--Units are in Pa (SI)-->
+                <config key="twist" value="5e7"/>
+                <config key="bend" value="2e7"/>
+                <config key="vmax" value="0.05"/>
+            </plugin>
+            <joint kind="main" damping=".03" frictionloss="0.0"/>
+            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+        </composite>
+        <!--===================== tendon_3 =====================-->
+        <composite type="cable" prefix="tendon3_" curve="s" count="70 1 1" size="0.13" offset="0 0.0105 0.11" quat="0.707 0 0.707 0" initial="none">
+            <plugin plugin="mujoco.elasticity.cable">
+                <!--Units are in Pa (SI)-->
+                <config key="twist" value="5e7"/>
+                <config key="bend" value="2e7"/>
+                <config key="vmax" value="0.05"/>
+            </plugin>
+            <joint kind="main" damping=".03" frictionloss="0.0"/>
+            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+        </composite>
+
+        <!--===================== tendon_4 =====================-->
+        <composite type="cable" prefix="tendon4_" curve="s" count="70 1 1" size="0.13" offset="0 -0.0105 0.11" quat="0.707 0 0.707 0" initial="none">
+            <plugin plugin="mujoco.elasticity.cable">
+                <!--Units are in Pa (SI)-->
+                <config key="twist" value="5e7"/>
+                <config key="bend" value="2e7"/>
+                <config key="vmax" value="0.05"/>
+            </plugin>
+            <joint kind="main" damping=".03" frictionloss="0.0"/>
+            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+        </composite>
+    <tendon>
+        <!-- tendon1 -->
+        <spatial name="tendon1_root" group="base" site="tendon1_start" />
+        <spatial name="tendon1_tip" group="seg1_v10" site="tendon1_end"/>
+
+        <spatial name="tendon2_root" group="base" site="tendon2_start"/>
+        <spatial name="tendon2_tip" group="seg1_v10" site="tendon2_end"/>
+
+        <spatial name="tendon3_root" group="base" site="tendon3_start"/>
+        <spatial name="tendon3_tip" group="seg1_v10" site="tendon3_end"/>
+
+        <spatial name="tendon4_root" group="base" site="tendon4_start"/>
+        <spatial name="tendon4_tip" group="seg1_v10" site="tendon4_end"/>
+    </tendon>
   </worldbody>
+
   <actuator>
-
-    <position name="u_seg1_j2" joint="seg1_j2_pitch" kp="200" ctrlrange="-0.610865 0.610865"/><!-- 약 35도 -->
-    <position name="u_seg1_j3" joint="seg1_j3_yaw" kp="200" ctrlrange="-0.610865 0.610865"/>
-    <position name="u_seg1_j4" joint="seg1_j4_pitch" kp="200" ctrlrange="-0.610865 0.610865"/>
-    <position name="u_seg1_j5" joint="seg1_j5_yaw" kp="200" ctrlrange="-0.610865 0.610865"/>
-    <position name="u_seg1_j6" joint="seg1_j6_pitch" kp="200" ctrlrange="-0.610865 0.610865"/>
-    <position name="u_seg1_j7" joint="seg1_j7_yaw" kp="200" ctrlrange="-0.610865 0.610865"/>
-    <position name="u_seg1_j8" joint="seg1_j8_pitch" kp="200" ctrlrange="-0.610865 0.610865"/>
-    <position name="u_seg1_j9" joint="seg1_j9_yaw" kp="200" ctrlrange="-0.610865 0.610865"/>
-
-
+    <position name="u_seg1_j2" joint="seg1_j2_pitch" kp="100" ctrlrange="-0.6109 0.6109"/><!-- 약 35도 -->
+    <position name="u_seg1_j3" joint="seg1_j3_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j4" joint="seg1_j4_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j5" joint="seg1_j5_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j6" joint="seg1_j6_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j7" joint="seg1_j7_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j8" joint="seg1_j8_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j9" joint="seg1_j9_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
   </actuator>
 </mujoco>
 
 <!-- z 방향으로 k값허용해야하지만
 x, y축으로는 허용안됨, 4축방향으로 k값 -->
-<!-- ================= SEGMENT 2 ================= -->
-                            <!-- <body name="seg2_base" pos="0 0 0.005">
-                              <body name="seg2_v1" pos="0 0 0.0075">
-                                <geom name="seg2_v1_geom" fromto="0 0 0  0 0 0.012"/>
-                                <joint name="seg2_j1_pitch" type="hinge" axis="1 0 0"/>
-
-                                <body name="seg2_v2" pos="0 0 0.012">
-                                  <geom name="seg2_v2_geom" fromto="0 0 0  0 0 0.012"/>
-                                  <joint name="seg2_j2_yaw" type="hinge" axis="0 1 0"/>
-
-                                  <body name="seg2_v3" pos="0 0 0.012">
-                                    <geom name="seg2_v3_geom" fromto="0 0 0  0 0 0.012"/>
-                                    <joint name="seg2_j3_pitch" type="hinge" axis="1 0 0"/>
-
-                                    <body name="seg2_v4" pos="0 0 0.012">
-                                      <geom name="seg2_v4_geom" fromto="0 0 0  0 0 0.012"/>
-                                      <joint name="seg2_j4_yaw" type="hinge" axis="0 1 0"/>
-
-                                      <body name="seg2_v5" pos="0 0 0.012">
-                                        <geom name="seg2_v5_geom" fromto="0 0 0  0 0 0.012"/>
-                                        <joint name="seg2_j5_pitch" type="hinge" axis="1 0 0"/>
-
-                                        <body name="seg2_v6" pos="0 0 0.012">
-                                          <geom name="seg2_v6_geom" fromto="0 0 0  0 0 0.012"/>
-                                          <joint name="seg2_j6_yaw" type="hinge" axis="0 1 0"/>
-
-                                          <body name="seg2_v7" pos="0 0 0.012">
-                                            <geom name="seg2_v7_geom" fromto="0 0 0  0 0 0.012"/>
-                                            <joint name="seg2_j7_pitch" type="hinge" axis="1 0 0"/>
-
-                                            <body name="seg2_v8" pos="0 0 0.012">
-                                              <geom name="seg2_v8_geom" fromto="0 0 0  0 0 0.012"/>
-                                              <joint name="seg2_j8_yaw" type="hinge" axis="0 1 0"/>
-
-                                              <body name="seg2_v9" pos="0 0 0.012">
-                                                <geom name="seg2_v9_geom" fromto="0 0 0  0 0 0.012"/>
-                                                <body name="seg2_v10" pos="0 0 0.012">
-                                                  <geom name="seg2_v10_geom" fromto="0 0 0  0 0 0.012"/>
-
-
-
-
-                                                  <body name="seg3_base" pos="0 0 0.005">
-                                                    <body name="seg3_v1" pos="0 0 0.012">
-                                                      <geom name="seg3_v1_geom" fromto="0 0 0  0 0 0.012"/>
-                                                      <joint name="seg3_j1_pitch" type="hinge" axis="1 0 0"/>
-
-                                                      <body name="seg3_v2" pos="0 0 0.012">
-                                                        <geom name="seg3_v2_geom" fromto="0 0 0  0 0 0.012"/>
-                                                        <joint name="seg3_j2_yaw" type="hinge" axis="0 1 0"/>
-
-                                                        <body name="seg3_v3" pos="0 0 0.012">
-                                                          <geom name="seg3_v3_geom" fromto="0 0 0  0 0 0.012"/>
-                                                          <joint name="seg3_j3_pitch" type="hinge" axis="1 0 0"/>
-
-                                                          <body name="seg3_v4" pos="0 0 0.012">
-                                                            <geom name="seg3_v4_geom" fromto="0 0 0  0 0 0.012"/>
-                                                            <joint name="seg3_j4_yaw" type="hinge" axis="0 1 0"/>
-
-                                                            <body name="seg3_v5" pos="0 0 0.012">
-                                                              <geom name="seg3_v5_geom" fromto="0 0 0  0 0 0.012"/>
-                                                              <joint name="seg3_j5_pitch" type="hinge" axis="1 0 0"/>
-
-                                                              <body name="seg3_v6" pos="0 0 0.012">
-                                                                <geom name="seg3_v6_geom" fromto="0 0 0  0 0 0.012"/>
-                                                                <joint name="seg3_j6_yaw" type="hinge" axis="0 1 0"/>
-
-                                                                <body name="seg3_v7" pos="0 0 0.012">
-                                                                  <geom name="seg3_v7_geom" fromto="0 0 0  0 0 0.012"/>
-                                                                  <joint name="seg3_j7_pitch" type="hinge" axis="1 0 0"/>
-
-                                                                  <body name="seg3_v8" pos="0 0 0.012">
-                                                                    <geom name="seg3_v8_geom" fromto="0 0 0  0 0 0.012"/>
-                                                                    <joint name="seg3_j8_yaw" type="hinge" axis="0 1 0"/>
-
-                                                                    <body name="seg3_v9" pos="0 0 0.012">
-                                                                      <geom name="seg3_v9_geom" fromto="0 0 0  0 0 0.012"/>
-                                                                      <body name="seg3_v10" pos="0 0 0.012">
-                                                                        <geom name="seg3_v10_geom" fromto="0 0 0  0 0 0.012"/>
-                                                                      </body>
-                                                                    </body>
-                                                                  </body>
-                                                                </body>
-                                                              </body>
-                                                            </body>
-                                                          </body>
-                                                        </body>
-                                                      </body>
-                                                    </body>
-                                                  </body>
-                                                </body>
-                                              </body>
-                                            </body>
-                                          </body>
-                                        </body>
-                                      </body>
-                                    </body>
-                                  </body>
-                                </body>
-                              </body>
-                            </body> -->
-                                                                              <!-- ================= SEGMENT 3 ================= -->
-    <!-- <position name="u_seg2_j1" joint="seg2_j1_pitch" kp="200" ctrlrange="-0.5 0.5"/>
-    <position name="u_seg2_j2" joint="seg2_j2_yaw"   kp="200" ctrlrange="-0.5 0.5"/>
-    
-    <position name="u_seg3_j1" joint="seg3_j1_pitch" kp="200" ctrlrange="-0.5 0.5"/>
-    <position name="u_seg3_j2" joint="seg3_j2_yaw"   kp="200" ctrlrange="-0.5 0.5"/> -->

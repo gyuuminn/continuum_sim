@@ -32,7 +32,7 @@
 
 
     <worldbody>
-        <composite type="cable" curve="s" count="70 1 1" size="1" offset="-.3 0 .6" initial="none">
+        <composite type="cable" curve="s" count="70 1 1" size="1" offset="-.3 0 .6" quat="0.707 0 0.707 0" initial="none">
         <plugin plugin="mujoco.elasticity.cable">
             <!--Units are in Pa (SI)-->
             <config key="twist" value="5e7"/>
@@ -43,8 +43,8 @@
         <geom type="capsule" size=".005" density="8000" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
         </composite>
         <body name="slider" pos=".7 0 .6">
-        <joint type="slide" axis="1 0 0" damping=".1"/>
-        <geom size=".01"/>
+            <joint type="slide" axis="0 1 0" damping=".1"/>
+            <geom size=".01"/>
         </body>
     </worldbody>
     <equality>
