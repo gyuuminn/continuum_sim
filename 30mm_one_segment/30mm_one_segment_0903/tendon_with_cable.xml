@@ -21,7 +21,7 @@
       <!-- 프록시(충돌 전용 슬리브) 공통 속성 -->
       <default class="proxy">
         <geom type="cylinder"
-              contype="1" conaffinity="2"
+              contype="1" conaffinity="3"
               margin="0.001" solimp="0.9 0.995 0.001" solref="0.02 1"
               rgba="0.2 0.8 1 0.15" group="3"/> <!-- 보기 불편하면 Group 3 끄기 -->
       </default>
@@ -41,7 +41,7 @@
             <geom name="geom_comp_root" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
             <joint name="rotation_root" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
             <inertial mass="0.034962578305385045" pos="-7.472585541467528e-08 7.901881324749933e-09 0.00013813391178014084" fullinertia="3.055182113221844e-06 2.848652002682884e-06 5.213750324900917e-06 -4.694970745810055e-12 -1.2612174129223041e-11 1.8838018378797825e-12" />
-            <site name="S1_root" pos="0 0 0.03" size="0.0016" rgba="1 0 0 1"/>
+            <!-- proxy for backbone -->
             <geom class="proxy" name="proxy_root_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
             <geom class="proxy" name="proxy_root_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
             <geom class="proxy" name="proxy_root_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -50,11 +50,32 @@
             <geom class="proxy" name="proxy_root_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
             <geom class="proxy" name="proxy_root_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
             <geom class="proxy" name="proxy_root_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+            <!-- proxy for tendon -->
+            <geom class="proxy" name="proxy_tendon_root_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
+
+            <geom class="proxy" name="proxy_tendon_root_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+            
+            <geom class="proxy" name="proxy_tendon_root_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+            
+            <geom class="proxy" name="proxy_tendon_root_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+            <geom class="proxy" name="proxy_tendon_root_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
 
             <body name="comp_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
                 <joint name="rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" /> <!--joint axis: 이 조인트가 어느 방향으로 움직이는지, pos: 조인트의 앵커(회전/이동이 일어나는 점) 위치-->
                 <geom name="geom_comp_1" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                 <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324746635e-09 0.00013813391178014496" fullinertia="3.0551821132218284e-06 2.8486520026829268e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.8838018376833885e-12" />
+                <!-- proxy for backbone -->
                 <geom class="proxy" name="proxy_1_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                 <geom class="proxy" name="proxy_1_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                 <geom class="proxy" name="proxy_1_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -63,11 +84,34 @@
                 <geom class="proxy" name="proxy_1_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
                 <geom class="proxy" name="proxy_1_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                 <geom class="proxy" name="proxy_1_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                <!-- proxy for tendon -->
+                <geom class="proxy" name="proxy_tendon_1_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
+
+                <geom class="proxy" name="proxy_tendon_1_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                
+                <geom class="proxy" name="proxy_tendon_1_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                
+                <geom class="proxy" name="proxy_tendon_1_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                <geom class="proxy" name="proxy_tendon_1_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
+
+
 
                 <body name="comp_2" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
                     <joint name="rotation_2" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                     <geom name="geom_comp_2" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                     <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324746635e-09 0.00013813391178014273" fullinertia="3.0551821132218267e-06 2.84865200268293e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.8838018376833877e-12" />
+                    <!-- proxy for backbone -->
                     <geom class="proxy" name="proxy_2_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                     <geom class="proxy" name="proxy_2_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                     <geom class="proxy" name="proxy_2_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -76,11 +120,32 @@
                     <geom class="proxy" name="proxy_2_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
                     <geom class="proxy" name="proxy_2_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                     <geom class="proxy" name="proxy_2_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                    <!-- proxy for tendon -->
+                    <geom class="proxy" name="proxy_tendon_2_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
+
+                    <geom class="proxy" name="proxy_tendon_2_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                    
+                    <geom class="proxy" name="proxy_tendon_2_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                    
+                    <geom class="proxy" name="proxy_tendon_2_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                    <geom class="proxy" name="proxy_tendon_2_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
 
                     <body name="comp_3" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
                         <joint name="rotation_3" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                         <geom name="geom_comp_3" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                         <inertial mass="0.034962578305385045" pos="-7.47258554145445e-08 7.901881324746637e-09 0.00013813391178014273" fullinertia="3.0551821132218403e-06 2.84865200268293e-06 5.213750324900907e-06 -4.694970745810085e-12 -1.2612174121400085e-11 1.883801837683387e-12" />
+                        <!-- proxy for backbone -->
                         <geom class="proxy" name="proxy_3_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                         <geom class="proxy" name="proxy_3_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                         <geom class="proxy" name="proxy_3_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -89,11 +154,32 @@
                         <geom class="proxy" name="proxy_3_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
                         <geom class="proxy" name="proxy_3_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                         <geom class="proxy" name="proxy_3_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                        <!-- proxy for tendon -->
+                        <geom class="proxy" name="proxy_tendon_3_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
+
+                        <geom class="proxy" name="proxy_tendon_3_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                        
+                        <geom class="proxy" name="proxy_tendon_3_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                        
+                        <geom class="proxy" name="proxy_tendon_3_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                        <geom class="proxy" name="proxy_tendon_3_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
 
                         <body name="comp_4" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
                             <joint name="rotation_4" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                             <geom name="geom_comp_4" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                             <inertial mass="0.034962578305385045" pos="-7.472585541454448e-08 7.901881324015413e-09 0.00013813391178015038" fullinertia="3.055182113221813e-06 2.8486520026828874e-06 5.213750324900898e-06 -4.69497074581008e-12 -1.2612174121400061e-11 1.8838018335764905e-12" />
+                            <!-- proxy for backbone -->
                             <geom class="proxy" name="proxy_4_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                             <geom class="proxy" name="proxy_4_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                             <geom class="proxy" name="proxy_4_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -103,10 +189,32 @@
                             <geom class="proxy" name="proxy_4_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                             <geom class="proxy" name="proxy_4_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
 
+                            <!-- proxy for tendon -->
+                            <geom class="proxy" name="proxy_tendon_4_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
+
+                            <geom class="proxy" name="proxy_tendon_4_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                            
+                            <geom class="proxy" name="proxy_tendon_4_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                            
+                            <geom class="proxy" name="proxy_tendon_4_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                            <geom class="proxy" name="proxy_tendon_4_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
+
                             <body name="comp_5" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
                                 <joint name="rotation_5" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                                 <geom name="geom_comp_5" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                                 <inertial mass="0.034962578305385045" pos="-7.472585541496629e-08 7.901881324746634e-09 0.0001381339117801356" fullinertia="3.0551821132218623e-06 2.8486520026829437e-06 5.213750324900904e-06 -4.694970745810083e-12 -1.261217412324965e-11 1.883801837683382e-12" />
+                                <!-- proxy for backbone -->
                                 <geom class="proxy" name="proxy_5_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                                 <geom class="proxy" name="proxy_5_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                                 <geom class="proxy" name="proxy_5_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -115,11 +223,33 @@
                                 <geom class="proxy" name="proxy_5_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
                                 <geom class="proxy" name="proxy_5_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                                 <geom class="proxy" name="proxy_5_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                                
+                                <!-- proxy for tendon -->
+                                <geom class="proxy" name="proxy_tendon_5_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
 
+                                <geom class="proxy" name="proxy_tendon_5_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                                
+                                <geom class="proxy" name="proxy_tendon_5_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                                
+                                <geom class="proxy" name="proxy_tendon_5_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                                <geom class="proxy" name="proxy_tendon_5_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
+                                
                                 <body name="comp_6" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
                                     <joint name="rotation_6" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                                     <geom name="geom_comp_6" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                                     <inertial mass="0.034962578305385045" pos="-7.472585541454451e-08 7.901881323397079e-09 0.00013813391178015924" fullinertia="3.0551821132217047e-06 2.8486520026828886e-06 5.213750324900898e-06 -4.6949707458100755e-12 -1.261217412140013e-11 1.883801832570639e-12" />
+                                    <!-- proxy for backbone -->
                                     <geom class="proxy" name="proxy_6_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                                     <geom class="proxy" name="proxy_6_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                                     <geom class="proxy" name="proxy_6_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>
@@ -128,11 +258,33 @@
                                     <geom class="proxy" name="proxy_6_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
                                     <geom class="proxy" name="proxy_6_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                                     <geom class="proxy" name="proxy_6_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+                                    
+                                    <!-- proxy for tendon -->
+                                    <geom class="proxy" name="proxy_tendon_6_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
 
+                                    <geom class="proxy" name="proxy_tendon_6_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                                    
+                                    <geom class="proxy" name="proxy_tendon_6_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                                    
+                                    <geom class="proxy" name="proxy_tendon_6_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                                    <geom class="proxy" name="proxy_tendon_6_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
+        
                                     <body name="comp_7" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
                                         <joint name="rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075" />
                                         <geom name="geom_comp_7" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
                                         <inertial mass="0.034962578305385045" pos="-7.472585541316211e-08 7.901881324746632e-09 0.00013813391178015339" fullinertia="3.0551821132217585e-06 2.8486520026828353e-06 5.213750324900921e-06 -4.6949707458100884e-12 -1.2612174111020612e-11 1.883801837683386e-12" />
+                                        <!-- proxy for backbone -->
                                         <geom class="proxy" name="proxy_7_0" type="capsule" size="0.0008 0.004" pos=" 0.007500  0.000000 0"/>
                                         <geom class="proxy" name="proxy_7_1" type="capsule" size="0.0008 0.004" pos=" 0.005303  0.005303 0"/>
                                         <geom class="proxy" name="proxy_7_2" type="capsule" size="0.0008 0.004" pos=" 0.000000  0.007500 0"/>  
@@ -141,6 +293,27 @@
                                         <geom class="proxy" name="proxy_7_5" type="capsule" size="0.0008 0.004" pos="-0.005303 -0.005303 0"/>
                                         <geom class="proxy" name="proxy_7_6" type="capsule" size="0.0008 0.004" pos=" 0.000000 -0.007500 0"/>
                                         <geom class="proxy" name="proxy_7_7" type="capsule" size="0.0008 0.004" pos=" 0.005303 -0.005303 0"/>
+
+                                        <!-- proxy for tendon -->
+                                        <geom class="proxy" name="proxy_tendon_7_east_1" type="capsule" size="0.0004 0.001" pos="0.008875 0 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_east_2" type="capsule" size="0.0004 0.001" pos="0.012125 0 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_east_3" type="capsule" size="0.0004 0.001" pos="0.0105 0.001625 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_east_4" type="capsule" size="0.0004 0.001" pos="0.0105 -0.001625 -0.0005"/>
+
+                                        <geom class="proxy" name="proxy_tendon_7_west_1" type="capsule" size="0.0004 0.001" pos="-0.008875 0 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_west_2" type="capsule" size="0.0004 0.001" pos="-0.012125 0 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_west_3" type="capsule" size="0.0004 0.001" pos="-0.0105 0.001625 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_west_4" type="capsule" size="0.0004 0.001" pos="-0.0105 -0.001625 -0.0005"/>
+                                        
+                                        <geom class="proxy" name="proxy_tendon_7_north_1" type="capsule" size="0.0004 0.001" pos="0 0.008875 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_north_2" type="capsule" size="0.0004 0.001" pos="0 0.012125 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_north_3" type="capsule" size="0.0004 0.001" pos="0.001625 0.0105 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_north_4" type="capsule" size="0.0004 0.001" pos="-0.001625 0.0105 -0.0005"/>
+                                        
+                                        <geom class="proxy" name="proxy_tendon_7_south_1" type="capsule" size="0.0004 0.001" pos="0 -0.008875 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_south_2" type="capsule" size="0.0004 0.001" pos="0 -0.012125 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_south_3" type="capsule" size="0.0004 0.001" pos="0.001625 -0.0105 -0.0005"/>
+                                        <geom class="proxy" name="proxy_tendon_7_south_4" type="capsule" size="0.0004 0.001" pos="-0.001625 -0.0105 -0.0005"/>
                                     </body>
                                 </body>
                             </body>
@@ -178,19 +351,20 @@
                                         <joint name="seg1_j6_pitch" type="hinge" axis="-1 0 0"/>
 
                                         <body name="seg1_v7" pos="0 0 0.015">
-                                        <geom name="seg1_v7_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.40 0.90 1"/>
-                                        <joint name="seg1_j7_yaw" type="hinge" axis="0 -1 0"/>
+                                            <geom name="seg1_v7_geom" fromto="0 0 0  0 0 0.015" rgba="0.10 0.40 0.90 1"/>
+                                            <joint name="seg1_j7_yaw" type="hinge" axis="0 -1 0"/>
 
-                                        <body name="seg1_v8" pos="0 0 0.015">
-                                            <geom name="seg1_v8_geom" fromto="0 0 0  0 0 0.015" rgba="0.45 0.20 0.95 1"/>
-                                            <joint name="seg1_j8_pitch" type="hinge" axis="-1 0 0"/>
+                                            <body name="seg1_v8" pos="0 0 0.015">
+                                                <geom name="seg1_v8_geom" fromto="0 0 0  0 0 0.015" rgba="0.45 0.20 0.95 1"/>
+                                                <joint name="seg1_j8_pitch" type="hinge" axis="-1 0 0"/>
 
-                                            <body name="seg1_v9" pos="0 0 0.015" >
-                                            <geom name="seg1_v9_geom" fromto="0 0 0  0 0 0.015" rgba="0.75 0.15 0.60 1"/>
-                                            <joint name="seg1_j9_yaw" type="hinge" axis="0 -1 0"/>
+                                                <body name="seg1_v9" pos="0 0 0.015" >
+                                                <geom name="seg1_v9_geom" fromto="0 0 0  0 0 0.015" rgba="0.75 0.15 0.60 1"/>
+                                                <joint name="seg1_j9_yaw" type="hinge" axis="0 -1 0"/>
 
-                                                <body name="seg1_v10" pos="0 0 0.0075">
-                                                    <geom name="seg1_v10_geom" fromto="0 0 0  0 0 0.0075" rgba="0.35 0.35 0.35 1"/>
+                                                    <body name="seg1_v10" pos="0 0 0.0075">
+                                                        <geom name="seg1_v10_geom" fromto="0 0 0  0 0 0.0075" rgba="0.35 0.35 0.35 1"/>
+                                                    </body>
                                                 </body>
                                             </body>
                                         </body>
@@ -202,7 +376,7 @@
                 </body>
             </body>
         </body>
-    </body>
+
         <!--===================== tendon_1 =====================-->
         <composite type="cable" prefix="tendon1_" curve="s" count="70 1 1" size="0.13" offset="0.0105 0 0.11" quat="0.707 0 0.707 0" initial="none">
             <plugin plugin="mujoco.elasticity.cable">
@@ -212,7 +386,7 @@
                 <config key="vmax" value="0.05"/>
             </plugin>
             <joint kind="main" damping=".03" frictionloss="0.0"/>
-            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+            <geom type="capsule" contype="2" conaffinity="1" size="0.0014" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
         </composite>
         <!--===================== tendon_2 =====================-->
         <composite type="cable" prefix="tendon2_" curve="s" count="70 1 1" size="0.13" offset="-0.0105 0 0.11" quat="0.707 0 0.707 0" initial="none">
@@ -223,7 +397,7 @@
                 <config key="vmax" value="0.05"/>
             </plugin>
             <joint kind="main" damping=".03" frictionloss="0.0"/>
-            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+            <geom type="capsule" contype="2" conaffinity="1" size="0.0014" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
         </composite>
         <!--===================== tendon_3 =====================-->
         <composite type="cable" prefix="tendon3_" curve="s" count="70 1 1" size="0.13" offset="0 0.0105 0.11" quat="0.707 0 0.707 0" initial="none">
@@ -234,7 +408,7 @@
                 <config key="vmax" value="0.05"/>
             </plugin>
             <joint kind="main" damping=".03" frictionloss="0.0"/>
-            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+            <geom type="capsule" contype="2" conaffinity="1" size="0.0014" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
         </composite>
 
         <!--===================== tendon_4 =====================-->
@@ -246,34 +420,39 @@
                 <config key="vmax" value="0.05"/>
             </plugin>
             <joint kind="main" damping=".03" frictionloss="0.0"/>
-            <geom type="capsule" size="0.0016" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
+            <geom type="capsule" contype="2" conaffinity="1" size="0.0014" density="8050" condim="3" friction="0.5 0.005 0.0001" rgba=".8 .2 .1 1" />
         </composite>
-    <tendon>
-        <!-- tendon1 -->
-        <spatial name="tendon1_root" group="base" site="tendon1_start" />
-        <spatial name="tendon1_tip" group="seg1_v10" site="tendon1_end"/>
+    </worldbody>
 
-        <spatial name="tendon2_root" group="base" site="tendon2_start"/>
-        <spatial name="tendon2_tip" group="seg1_v10" site="tendon2_end"/>
+    <equality>
+        <connect name="con_tendon1_start" body1="tendon1_B_first" body2="comp_7" anchor="0.0105 0 0.105"/>
 
-        <spatial name="tendon3_root" group="base" site="tendon3_start"/>
-        <spatial name="tendon3_tip" group="seg1_v10" site="tendon3_end"/>
+        <connect name="con_tendon2_start" body1="tendon2_B_first" body2="comp_7" anchor="-0.0105 0 0.105"/>
 
-        <spatial name="tendon4_root" group="base" site="tendon4_start"/>
-        <spatial name="tendon4_tip" group="seg1_v10" site="tendon4_end"/>
-    </tendon>
-  </worldbody>
+        <connect name="con_tendon3_start" body1="tendon3_B_first" body2="comp_7" anchor="0 0.0105 0.105"/>
 
-  <actuator>
-    <position name="u_seg1_j2" joint="seg1_j2_pitch" kp="100" ctrlrange="-0.6109 0.6109"/><!-- 약 35도 -->
-    <position name="u_seg1_j3" joint="seg1_j3_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j4" joint="seg1_j4_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j5" joint="seg1_j5_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j6" joint="seg1_j6_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j7" joint="seg1_j7_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j8" joint="seg1_j8_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j9" joint="seg1_j9_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
-  </actuator>
+        <connect name="con_tendon4_start" body1="tendon4_B_first" body2="comp_7" anchor="0 -0.0105 0.105"/>
+    </equality>
+
+    <actuator>
+        <position name="u_seg1_j2" joint="seg1_j2_pitch" kp="100" ctrlrange="-0.6109 0.6109"/> <!-- 약 35도 -->
+
+        <position name="u_seg1_j3" joint="seg1_j3_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        <position name="u_seg1_j4" joint="seg1_j4_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        <position name="u_seg1_j5" joint="seg1_j5_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        <position name="u_seg1_j6" joint="seg1_j6_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        <position name="u_seg1_j7" joint="seg1_j7_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        <position name="u_seg1_j8" joint="seg1_j8_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        <position name="u_seg1_j9" joint="seg1_j9_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+
+        
+    </actuator>
 </mujoco>
 
 <!-- z 방향으로 k값허용해야하지만

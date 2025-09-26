@@ -199,21 +199,20 @@
   </worldbody>
   <actuator>
 
-    <position name="u_seg1_j2" joint="seg1_j2_pitch" kp="200" ctrlrange="-0.6109 0.6109"/><!-- 약 35도 -->
-    <position name="u_seg1_j3" joint="seg1_j3_yaw" kp="200" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j4" joint="seg1_j4_pitch" kp="200" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j5" joint="seg1_j5_yaw" kp="200" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j6" joint="seg1_j6_pitch" kp="200" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j7" joint="seg1_j7_yaw" kp="200" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j8" joint="seg1_j8_pitch" kp="200" ctrlrange="-0.6109 0.6109"/>
-    <position name="u_seg1_j9" joint="seg1_j9_yaw" kp="200" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j2" joint="seg1_j2_pitch" kp="100" ctrlrange="-0.6109 0.6109"/><!-- 약 35도 -->
+    <position name="u_seg1_j3" joint="seg1_j3_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j4" joint="seg1_j4_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j5" joint="seg1_j5_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j6" joint="seg1_j6_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j7" joint="seg1_j7_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j8" joint="seg1_j8_pitch" kp="100" ctrlrange="-0.6109 0.6109"/>
+    <position name="u_seg1_j9" joint="seg1_j9_yaw" kp="100" ctrlrange="-0.6109 0.6109"/>
 
 
   </actuator>
 </mujoco>
 
-<!-- z 방향으로 k값허용해야하지만
-x, y축으로는 허용안됨, 4축방향으로 k값 -->
+
 <!-- ================= SEGMENT 2 ================= -->
                             <!-- <body name="seg2_base" pos="0 0 0.005">
                               <body name="seg2_v1" pos="0 0 0.0075">
