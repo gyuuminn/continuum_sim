@@ -1,0 +1,420 @@
+<?xml version="1.0"?>
+<mujoco model="continuum_robot">
+    <compiler angle="degree" coordinate="local"/>
+    <option integrator="Euler"/>
+
+    <extension>
+        <plugin plugin="mujoco.elasticity.cable"/>
+    </extension>
+
+    <compiler autolimits="true"/>
+
+    <default>
+        <joint limited="true" range="-35 35" stiffness="0.04" damping="0.01" armature="0.0001"/>
+        <site rgba=".9 .9 .9 1" size="0.001625 0.001625 0.001625"/>
+        <!-- STL(시각용) 공통 속성: 충돌 off -->
+        <default class="comp">
+            <geom contype="1" conaffinity="1"/>
+        </default>
+    </default>
+
+    <asset>
+        <!-- STL 로드 -->
+        <mesh name="mesh_component2" file="meshes/mesh_component2.stl" scale="0.001 0.001 0.001"/>
+        <!-- 환경(Plane) 로드 -->
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+    <worldbody>
+        <!-- 조명 설정 -->
+        <light directional="true" diffuse=".4 .4 .4" specular="0.1 0.1 0.1" pos="0 0 5.0" dir="0 0 -1" castshadow="false"/>
+        <light directional="true" diffuse=".6 .6 .6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1"/>
+        <!-- Plane 설정 -->
+        <geom name="ground" type="plane" size="0 0 1" pos="0 0 0" quat="1 0 0 0" material="matplane" condim="1"/>
+        
+        <body name="base" pos="0 0 0">
+            <joint name="base_slide" type="slide" axis="0 0 1" range="-0.01 0.01"/>
+            <geom type="sphere" size="0.001" density="1000" rgba="0 0 0 0" contype="0" conaffinity="0"/>
+            <site name="anchor_1" pos=" 0.0105  0      0.025"/>
+            <site name="anchor_2" pos="-0.0105  0      0.025"/>
+            <site name="anchor_3" pos=" 0       0.0105 0.025"/>
+            <site name="anchor_4" pos=" 0      -0.0105 0.025"/>
+        </body>
+
+    <!-- ===================== Segment 1 ===================== -->
+        <body name="comp_root" pos="0 0 0.05" quat="1 0 0 0">
+            <geom name="geom_comp_root" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
+            <joint name="rotation_root" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+            <site name="s1_1" pos="0.0105 0 0"/>
+            <site name="s1_2" pos="-0.0105 0 0"/>
+            <site name="s1_3" pos="0 0.0105 0"/>
+            <site name="s1_4" pos="0 -0.0105 0"/>
+
+            <body name="comp_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                <joint name="rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                <!--joint axis: 이 조인트가 어느 방향으로 움직이는지, pos: 조인트의 앵커(회전/이동이 일어나는 점) 위치-->
+                <geom name="geom_comp_1" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                <site name="s2_1" pos="0.0105 0 0"/>
+                <site name="s2_2" pos="-0.0105 0 0"/>
+                <site name="s2_3" pos="0 0.0105 0"/>
+                <site name="s2_4" pos="0 -0.0105 0"/>
+
+                <body name="comp_2" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                    <joint name="rotation_2" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                    <geom name="geom_comp_2" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                    <site name="s3_1" pos="0.0105 0 0"/>
+                    <site name="s3_2" pos="-0.0105 0 0"/>
+                    <site name="s3_3" pos="0 0.0105 0"/>
+                    <site name="s3_4" pos="0 -0.0105 0"/>
+                 
+                    <body name="comp_3" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                        <joint name="rotation_3" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                        <geom name="geom_comp_3" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                        <site name="s4_1" pos="0.0105 0 0"/>
+                        <site name="s4_2" pos="-0.0105 0 0"/>
+                        <site name="s4_3" pos="0 0.0105 0"/>
+                        <site name="s4_4" pos="0 -0.0105 0"/>
+                        
+                        <body name="comp_4" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                            <joint name="rotation_4" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                            <geom name="geom_comp_4" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                            <site name="s5_1" pos="0.0105 0 0"/>   
+                            <site name="s5_2" pos="-0.0105 0 0"/>
+                            <site name="s5_3" pos="0 0.0105 0"/>
+                            <site name="s5_4" pos="0 -0.0105 0"/>
+                           
+                            <body name="comp_5" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                <joint name="rotation_5" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                <geom name="geom_comp_5" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                <site name="s6_1" pos="0.0105 0 0"/>
+                                <site name="s6_2" pos="-0.0105 0 0"/>
+                                <site name="s6_3" pos="0 0.0105 0"/>
+                                <site name="s6_4" pos="0 -0.0105 0"/>
+                                
+                                <body name="comp_6" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                    <joint name="rotation_6" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                    <geom name="geom_comp_6" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                    <site name="s7_1" pos="0.0105 0 0"/>
+                                    <site name="s7_2" pos="-0.0105 0 0"/>
+                                    <site name="s7_3" pos="0 0.0105 0"/>
+                                    <site name="s7_4" pos="0 -0.0105 0"/>
+
+                                    <body name="comp_7" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                        <joint name="rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                        <geom name="geom_comp_7" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                        <site name="s8_1" pos="0.0105 0 0"/>
+                                        <site name="s8_2" pos="-0.0105 0 0"/>
+                                        <site name="s8_3" pos="0 0.0105 0"/>
+                                        <site name="s8_4" pos="0 -0.0105 0"/>
+                                        <site name="seg1_imu" pos="0 0 0"/>
+                                    <!-- =============================== Segment 2 =============================== -->
+                                        <body name="seg2_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                            <geom name="seg2_comp_1" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1"/>
+                                            <joint name="seg2_rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                            <site name="2s1_1" pos="0.0105 0 0"/>
+                                            <site name="2s1_2" pos="-0.0105 0 0"/>
+                                            <site name="2s1_3" pos="0 0.0105 0"/>
+                                            <site name="2s1_4" pos="0 -0.0105 0"/>
+
+                                            <body name="seg2_2" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                <geom name="seg2_comp_2" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1"/>
+                                                <joint name="seg2_rotation_2" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                <site name="2s2_1" pos="0.0105 0 0"/>
+                                                <site name="2s2_2" pos="-0.0105 0 0"/>
+                                                <site name="2s2_3" pos="0 0.0105 0"/>
+                                                <site name="2s2_4" pos="0 -0.0105 0"/>
+
+                                                <body name="seg2_3" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                    <geom name="seg2_comp_3" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1"/>
+                                                    <joint name="seg2_rotation_3" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                    <site name="2s3_1" pos="0.0105 0 0"/>
+                                                    <site name="2s3_2" pos="-0.0105 0 0"/>
+                                                    <site name="2s3_3" pos="0 0.0105 0"/>
+                                                    <site name="2s3_4" pos="0 -0.0105 0"/>
+
+                                                    <body name="seg2_4" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                        <geom name="seg2_comp_4" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1"/>
+                                                        <joint name="seg2_rotation_4" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                        <site name="2s4_1" pos="0.0105 0 0"/>
+                                                        <site name="2s4_2" pos="-0.0105 0 0"/>
+                                                        <site name="2s4_3" pos="0 0.0105 0"/>
+                                                        <site name="2s4_4" pos="0 -0.0105 0"/>
+
+                                                        <body name="seg2_5" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                            <geom name="seg2_comp_5" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1"/>
+                                                            <joint name="seg2_rotation_5" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                            <site name="2s5_1" pos="0.0105 0 0"/>
+                                                            <site name="2s5_2" pos="-0.0105 0 0"/>
+                                                            <site name="2s5_3" pos="0 0.0105 0"/>
+                                                            <site name="2s5_4" pos="0 -0.0105 0"/>
+
+                                                            <body name="seg2_6" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                                <geom name="seg2_comp_6" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" rgba="1 1 1 1"/>
+                                                                <joint name="seg2_rotation_6" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                <site name="2s6_1" pos="0.0105 0 0"/>
+                                                                <site name="2s6_2" pos="-0.0105 0 0"/>
+                                                                <site name="2s6_3" pos="0 0.0105 0"/>
+                                                                <site name="2s6_4" pos="0 -0.0105 0"/>
+
+                                                                <body name="seg2_7" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                                    <geom name="seg2_comp_7" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1"/>
+                                                                    <joint name="seg2_rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                    <site name="2s7_1" pos="0.0105 0 0"/>
+                                                                    <site name="2s7_2" pos="-0.0105 0 0"/>
+                                                                    <site name="2s7_3" pos="0 0.0105 0"/>
+                                                                    <site name="2s7_4" pos="0 -0.0105 0"/>
+
+                                                                    <body name="seg2_8" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                                        <geom name="seg2_comp_8" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" rgba="1 1 1 1"/>
+                                                                        <joint name="seg2_rotation_8" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                        <site name="2s8_1" pos="0.0105 0 0"/>
+                                                                        <site name="2s8_2" pos="-0.0105 0 0"/>
+                                                                        <site name="2s8_3" pos="0 0.0105 0"/>
+                                                                        <site name="2s8_4" pos="0 -0.0105 0"/>
+
+                                                                    <!-- ===================== Segment 3 ===================== -->
+                                                                        <body name="seg3_1" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                                            <geom name="seg3_comp_1" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                                                            <joint name="seg3_rotation_1" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                            <site name="3s1_1" pos="0.0105 0 0"/>
+                                                                            <site name="3s1_2" pos="-0.0105 0 0"/>
+                                                                            <site name="3s1_3" pos="0 0.0105 0"/>
+                                                                            <site name="3s1_4" pos="0 -0.0105 0"/>
+
+                                                                            <body name="seg3_2" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                                                <geom name="seg3_comp_2" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                                                                <joint name="seg3_rotation_2" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                <site name="3s2_1" pos="0.0105 0 0"/>
+                                                                                <site name="3s2_2" pos="-0.0105 0 0"/>
+                                                                                <site name="3s2_3" pos="0 0.0105 0"/>
+                                                                                <site name="3s2_4" pos="0 -0.0105 0"/>
+
+                                                                                <body name="seg3_3" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                                                    <geom name="seg3_comp_3" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                                                                    <joint name="seg3_rotation_3" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                    <site name="3s3_1" pos="0.0105 0 0"/>
+                                                                                    <site name="3s3_2" pos="-0.0105 0 0"/>
+                                                                                    <site name="3s3_3" pos="0 0.0105 0"/>
+                                                                                    <site name="3s3_4" pos="0 -0.0105 0"/>
+
+                                                                                    <body name="seg3_4" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                                                        <geom name="seg3_comp_4" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                                                                        <joint name="seg3_rotation_4" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                        <site name="3s4_1" pos="0.0105 0 0"/>
+                                                                                        <site name="3s4_2" pos="-0.0105 0 0"/>
+                                                                                        <site name="3s4_3" pos="0 0.0105 0"/>
+                                                                                        <site name="3s4_4" pos="0 -0.0105 0"/>
+
+                                                                                        <body name="seg3_5" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                                                            <geom name="seg3_comp_5" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                                                                            <joint name="seg3_rotation_5" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                            <site name="3s5_1" pos="0.0105 0 0"/>
+                                                                                            <site name="3s5_2" pos="-0.0105 0 0"/>
+                                                                                            <site name="3s5_3" pos="0 0.0105 0"/>
+                                                                                            <site name="3s5_4" pos="0 -0.0105 0"/>
+
+                                                                                            <body name="seg3_6" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                                                                <geom name="seg3_comp_6" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
+                                                                                                <joint name="seg3_rotation_6" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                                <site name="3s6_1" pos="0.0105 0 0"/>
+                                                                                                <site name="3s6_2" pos="-0.0105 0 0"/>
+                                                                                                <site name="3s6_3" pos="0 0.0105 0"/>
+                                                                                                <site name="3s6_4" pos="0 -0.0105 0"/>
+
+                                                                                                <body name="seg3_7" pos="0 0 0.015" quat="0.70710678 0 0 -0.70710678">
+                                                                                                    <geom name="seg3_comp_7" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0" quat="1 0 0 0"/>
+                                                                                                    <joint name="seg3_rotation_7" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                                    <site name="3s7_1" pos="0.0105 0 0"/>
+                                                                                                    <site name="3s7_2" pos="-0.0105 0 0"/>
+                                                                                                    <site name="3s7_3" pos="0 0.0105 0"/>
+                                                                                                    <site name="3s7_4" pos="0 -0.0105 0"/>
+
+                                                                                                    <body name="seg3_8" pos="0 0 0.015" quat="0.70710678 0 0 0.70710678">
+                                                                                                        <geom name="seg3_comp_8" class="comp" type="mesh" mesh="mesh_component2" pos="0 0 0"/>
+                                                                                                        <joint name="seg3_rotation_8" type="hinge" axis="1 0 0" pos="0.01794 0 -0.0075"/>
+                                                                                                        <site name="3s8_1" pos="0.0105 0 0"/>
+                                                                                                        <site name="3s8_2" pos="-0.0105 0 0"/>
+                                                                                                        <site name="3s8_3" pos="0 0.0105 0"/>
+                                                                                                        <site name="3s8_4" pos="0 -0.0105 0"/>
+                                                                                                    </body>
+                                                                                                </body>
+                                                                                            </body>
+                                                                                        </body>
+                                                                                    </body>
+                                                                                </body>
+                                                                            </body>
+                                                                        </body>                 
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    
+    <tendon>
+        <!-- ===================== Segment 1 ===================== -->
+        <spatial name="tendon_1" width="0.0010" rgba="1 0 0 1" limited="true" range="0.0109 0.0111">
+            <site site="anchor_1"/>
+            <site site="s1_1"/>
+            <site site="s2_3"/>
+            <site site="s3_1"/>
+            <site site="s4_3"/>
+            <site site="s5_1"/>
+            <site site="s6_3"/>
+            <site site="s7_1"/>
+            <site site="s8_3"/>
+        </spatial>
+        <spatial name="tendon_2" width="0.0010" rgba="0 1 0 1" limited="true" range="0.0109 0.0111">
+            <site site="anchor_2"/>
+            <site site="s1_2"/>
+            <site site="s2_4"/>
+            <site site="s3_2"/>
+            <site site="s4_4"/>
+            <site site="s5_2"/>
+            <site site="s6_4"/>
+            <site site="s7_2"/>
+            <site site="s8_4"/>
+        </spatial>
+        <spatial name="tendon_3" width="0.0010" rgba="0 0 1 1" limited="true" range="0.0109 0.0111">
+            <site site="anchor_3"/>
+            <site site="s1_3"/>
+            <site site="s2_2"/>
+            <site site="s3_3"/>
+            <site site="s4_2"/>
+            <site site="s5_3"/>
+            <site site="s6_2"/>
+            <site site="s7_3"/>
+            <site site="s8_2"/>
+        </spatial>
+        <spatial name="tendon_4" width="0.0010" rgba="1 1 0 1" limited="true" range="0.0109 0.0111">
+            <site site="anchor_4"/>
+            <site site="s1_4"/>
+            <site site="s2_1"/>
+            <site site="s3_4"/>
+            <site site="s4_1"/>
+            <site site="s5_4"/>
+            <site site="s6_1"/>
+            <site site="s7_4"/>
+            <site site="s8_1"/>
+        </spatial>
+
+
+    </tendon>
+    <actuator>
+        <!-- tendon_1 에 장력 주는 모터 -->
+        <motor name="cable_red" tendon="tendon_1"
+            ctrllimited="true" ctrlrange="-5 5"/>
+
+        <motor name="cable_green" tendon="tendon_2"
+            ctrllimited="true" ctrlrange="-5 5"/>
+
+        <motor name="cable_blue" tendon="tendon_3"
+            ctrllimited="true" ctrlrange="-5 5"/>
+
+        <motor name="cable_yellow" tendon="tendon_4"
+            ctrllimited="true" ctrlrange="-5 5"/>
+    </actuator>
+
+    <sensor>
+        <framequat name="imu_quat_seg1" objtype="site" objname="seg1_imu"/>
+        <gyro name="imu_gyro_seg1" site="seg1_imu"/>
+        <accelerometer name="imu_acc_seg1" site="seg1_imu"/>
+
+    </sensor>
+
+</mujoco>
+        <!-- ===================== Segment 2 =====================
+        <spatial name="s2_tendon_1" width="0.0010" rgba="1 0 0 1" limited="true" range="0.0218 0.0222">
+            <site site="2s1_1"/>
+            <site site="2s2_4"/>
+            <site site="2s3_1"/>
+            <site site="2s4_4"/>
+            <site site="2s5_1"/>
+            <site site="2s6_4"/>
+            <site site="2s7_1"/>
+            <site site="2s8_4"/>
+        </spatial>
+        <spatial name="s2_tendon_2" width="0.0010" rgba="0 1 0 1" limited="true" range="0.0218 0.0222">
+            <site site="2s1_2"/>
+            <site site="2s2_3"/>
+            <site site="2s3_2"/>
+            <site site="2s4_3"/>
+            <site site="2s5_2"/>
+            <site site="2s6_3"/>
+            <site site="2s7_2"/>
+            <site site="2s8_3"/>
+        </spatial>
+        <spatial name="s2_tendon_3" width="0.0010" rgba="0 0 1 1" limited="true" range="0.0218 0.0222">
+            <site site="2s1_3"/>
+            <site site="2s2_2"/>
+            <site site="2s3_3"/>
+            <site site="2s4_2"/>
+            <site site="2s5_3"/>
+            <site site="2s6_2"/>
+            <site site="2s7_3"/>
+            <site site="2s8_2"/>
+        </spatial>
+        <spatial name="s2_tendon_4" width="0.0010" rgba="1 1 0 1" limited="true" range="0.0218 0.0222">
+            <site site="2s1_4"/>
+            <site site="2s2_1"/>
+            <site site="2s3_4"/>
+            <site site="2s4_1"/>
+            <site site="2s5_4"/>
+            <site site="2s6_1"/>
+            <site site="2s7_4"/>
+            <site site="2s8_1"/>
+        </spatial> -->
+
+        <!-- ===================== Segment 3 ===================== -->
+        <!-- <spatial name="s3_tendon_1" width="0.0010" rgba="1 0 0 1" limited="true" range="0.0327 0.0333">
+            <site site="3s1_1"/>
+            <site site="3s2_3"/>
+            <site site="3s3_1"/>
+            <site site="3s4_3"/>
+            <site site="3s5_1"/>
+            <site site="3s6_3"/>
+            <site site="3s7_1"/>
+            <site site="3s8_3"/>
+        </spatial>
+        <spatial name="s3_tendon_2" width="0.0010" rgba="0 1 0 1" limited="true" range="0.0327 0.0333">
+            <site site="3s1_2"/>
+            <site site="3s2_4"/>
+            <site site="3s3_2"/>
+            <site site="3s4_4"/>
+            <site site="3s5_2"/>
+            <site site="3s6_4"/>
+            <site site="3s7_2"/>
+            <site site="3s8_4"/>
+        </spatial>
+        <spatial name="s3_tendon_3" width="0.0010" rgba="0 0 1 1" limited="true" range="0.0327 0.0333">
+            <site site="3s1_3"/>
+            <site site="3s2_2"/>
+            <site site="3s3_3"/>
+            <site site="3s4_2"/>
+            <site site="3s5_3"/>
+            <site site="3s6_2"/>
+            <site site="3s7_3"/>
+            <site site="3s8_2"/>
+        </spatial>
+        <spatial name="s3_tendon_4" width="0.0010" rgba="1 1 0 1" limited="true" range="0.0327 0.0333">
+            <site site="3s1_4"/>
+            <site site="3s2_1"/>
+            <site site="3s3_4"/>
+            <site site="3s4_1"/>
+            <site site="3s5_4"/>
+            <site site="3s6_1"/>
+            <site site="3s7_4"/>
+            <site site="3s8_1"/>
+        </spatial> -->
