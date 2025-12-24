@@ -1,2 +1,2 @@
 # Continuum Sim
-ROMA_Lab Continuum Simulation Development
+RoMa_Lab Continuum Simulation Development
